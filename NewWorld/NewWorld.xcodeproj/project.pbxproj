@@ -14,6 +14,7 @@
 		D6C9DB521C0EA68B00A5CB4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6C9DB501C0EA68B00A5CB4A /* LaunchScreen.storyboard */; };
 		D6C9DB5D1C0EA68C00A5CB4A /* NewWorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9DB5C1C0EA68C00A5CB4A /* NewWorldTests.swift */; };
 		D6C9DB681C0EA68C00A5CB4A /* NewWorldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9DB671C0EA68C00A5CB4A /* NewWorldUITests.swift */; };
+		D6C9DBB01C11175B00A5CB4A /* IMG_7340.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6C9DBAF1C11175B00A5CB4A /* IMG_7340.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D6C9DB631C0EA68C00A5CB4A /* NewWorldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewWorldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C9DB671C0EA68C00A5CB4A /* NewWorldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorldUITests.swift; sourceTree = "<group>"; };
 		D6C9DB691C0EA68C00A5CB4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6C9DBAF1C11175B00A5CB4A /* IMG_7340.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMG_7340.jpg; path = ../../../../Desktop/IMG_7340.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				D6C9DB4E1C0EA68B00A5CB4A /* Assets.xcassets */,
 				D6C9DB501C0EA68B00A5CB4A /* LaunchScreen.storyboard */,
 				D6C9DB531C0EA68B00A5CB4A /* Info.plist */,
+				D6C9DBAF1C11175B00A5CB4A /* IMG_7340.jpg */,
 			);
 			path = NewWorld;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				TargetAttributes = {
 					D6C9DB431C0EA68B00A5CB4A = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = MMXMQ9SFM7;
 					};
 					D6C9DB571C0EA68C00A5CB4A = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -230,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6C9DB521C0EA68B00A5CB4A /* LaunchScreen.storyboard in Resources */,
+				D6C9DBB01C11175B00A5CB4A /* IMG_7340.jpg in Resources */,
 				D6C9DB4F1C0EA68B00A5CB4A /* Assets.xcassets in Resources */,
 				D6C9DB4D1C0EA68B00A5CB4A /* Main.storyboard in Resources */,
 			);
@@ -397,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NewWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Anusha-Kankanala.HelloWorldprogram.NewWorld";
@@ -408,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NewWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Anusha-Kankanala.HelloWorldprogram.NewWorld";
@@ -482,6 +489,7 @@
 				D6C9DB6E1C0EA68C00A5CB4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6C9DB6F1C0EA68C00A5CB4A /* Build configuration list for PBXNativeTarget "NewWorldTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +498,7 @@
 				D6C9DB711C0EA68C00A5CB4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6C9DB721C0EA68C00A5CB4A /* Build configuration list for PBXNativeTarget "NewWorldUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +507,7 @@
 				D6C9DB741C0EA68C00A5CB4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
