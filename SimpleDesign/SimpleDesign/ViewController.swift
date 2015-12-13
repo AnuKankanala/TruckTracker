@@ -15,14 +15,15 @@ class ViewController: UIViewController {
     @IBOutlet var WelcomeLabel: UILabel!
     @IBOutlet var TruckImage: UIImageView!
     
-    
+    //var ref : Firebase! //(url: "https://cieldessertbar.firebaseio.com/Orders")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Firebase(url: "https://trucktracker.firebaseio.com/Truck").observeEventType(.Value, withBlock: { snapshot -> Void in
+        
+        /*ref.observeEventType(.Value, withBlock: { snapshot -> Void in
             print("Data in my server is \(snapshot)")
-        })
+        })*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
        if(segue.identifier=="SignUpDetails"){
-        if let vc = segue.destinationViewController as? SecondVC {
+        if let _ = segue.destinationViewController as? SecondVC {
        
         
         }
