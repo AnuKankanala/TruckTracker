@@ -22,6 +22,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         Firebase(url: "https://trucktracker.firebaseio.com/Truck").observeEventType(.Value, withBlock: { snapshot -> Void in
             print("Data in my server is \(snapshot)")
+            
+            
+            
         })
     }
 

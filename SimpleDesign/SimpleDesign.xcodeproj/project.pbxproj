@@ -24,6 +24,9 @@
 		D6ED20851C113BEC00979EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6ED20831C113BEC00979EB6 /* LaunchScreen.storyboard */; };
 		D6ED20901C113BEC00979EB6 /* SimpleDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED208F1C113BEC00979EB6 /* SimpleDesignTests.swift */; };
 		D6ED209B1C113BEC00979EB6 /* SimpleDesignUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED209A1C113BEC00979EB6 /* SimpleDesignUITests.swift */; };
+		D6F52B521C1D41DA00F15C2C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F52B511C1D41DA00F15C2C /* CFNetwork.framework */; };
+		D6F52B541C1D428200F15C2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F52B531C1D428200F15C2C /* UIKit.framework */; };
+		D6F52B561C1D429300F15C2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F52B551C1D429300F15C2C /* Foundation.framework */; };
 		D6F97C901C11F15C0033BC78 /* LocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F97C8F1C11F15C0033BC78 /* LocationRequest.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +71,9 @@
 		D6ED20961C113BEC00979EB6 /* SimpleDesignUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleDesignUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ED209A1C113BEC00979EB6 /* SimpleDesignUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDesignUITests.swift; sourceTree = "<group>"; };
 		D6ED209C1C113BEC00979EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6F52B511C1D41DA00F15C2C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D6F52B531C1D428200F15C2C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D6F52B551C1D429300F15C2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6F97C8F1C11F15C0033BC78 /* LocationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationRequest.swift; path = ../LocationRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,8 +82,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D67B03411C1D3C4700FC88BC /* AudioToolbox.framework in Frameworks */,
+				D6F52B561C1D429300F15C2C /* Foundation.framework in Frameworks */,
+				D6F52B541C1D428200F15C2C /* UIKit.framework in Frameworks */,
 				D67B033F1C1D3C4100FC88BC /* CoreGraphics.framework in Frameworks */,
+				D6F52B521C1D41DA00F15C2C /* CFNetwork.framework in Frameworks */,
+				D67B03411C1D3C4700FC88BC /* AudioToolbox.framework in Frameworks */,
 				D67B033D1C1D3C3800FC88BC /* CoreLocation.framework in Frameworks */,
 				D67B033B1C1D3C3200FC88BC /* Security.framework in Frameworks */,
 				D67B03391C1D3C2800FC88BC /* SystemConfiguration.framework in Frameworks */,
@@ -106,6 +115,9 @@
 		D6ED206E1C113BEC00979EB6 = {
 			isa = PBXGroup;
 			children = (
+				D6F52B551C1D429300F15C2C /* Foundation.framework */,
+				D6F52B531C1D428200F15C2C /* UIKit.framework */,
+				D6F52B511C1D41DA00F15C2C /* CFNetwork.framework */,
 				D67B03401C1D3C4700FC88BC /* AudioToolbox.framework */,
 				D67B033E1C1D3C4100FC88BC /* CoreGraphics.framework */,
 				D67B033C1C1D3C3800FC88BC /* CoreLocation.framework */,
