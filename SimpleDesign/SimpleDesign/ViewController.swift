@@ -15,15 +15,15 @@ class ViewController: UIViewController {
     @IBOutlet var WelcomeLabel: UILabel!
     @IBOutlet var TruckImage: UIImageView!
     
-    //var ref : Firebase! //(url: "https://cieldessertbar.firebaseio.com/Orders")
+    var ref = Firebase(url: "https://trucktracker.firebaseio.com/Truck")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        /*ref.observeEventType(.Value, withBlock: { snapshot -> Void in
+        ref.observeEventType(.Value, withBlock: { snapshot -> Void in
             print("Data in my server is \(snapshot)")
-        })*/
+        })
     }
 
     override func didReceiveMemoryWarning() {

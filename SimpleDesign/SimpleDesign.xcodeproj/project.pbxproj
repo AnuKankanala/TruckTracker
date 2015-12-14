@@ -13,7 +13,6 @@
 		D67B03371C1D3C1B00FC88BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B03361C1D3C1B00FC88BC /* QuartzCore.framework */; };
 		D67B033B1C1D3C3200FC88BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B033A1C1D3C3200FC88BC /* Security.framework */; };
 		D67B033D1C1D3C3800FC88BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B033C1C1D3C3800FC88BC /* CoreLocation.framework */; };
-		D67B033F1C1D3C4100FC88BC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B033E1C1D3C4100FC88BC /* CoreGraphics.framework */; };
 		D67B03411C1D3C4700FC88BC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B03401C1D3C4700FC88BC /* AudioToolbox.framework */; };
 		D6ED207B1C113BEC00979EB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED207A1C113BEC00979EB6 /* AppDelegate.swift */; };
 		D6ED207D1C113BEC00979EB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED207C1C113BEC00979EB6 /* ViewController.swift */; };
@@ -22,13 +21,19 @@
 		D6ED20851C113BEC00979EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6ED20831C113BEC00979EB6 /* LaunchScreen.storyboard */; };
 		D6ED20901C113BEC00979EB6 /* SimpleDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED208F1C113BEC00979EB6 /* SimpleDesignTests.swift */; };
 		D6ED209B1C113BEC00979EB6 /* SimpleDesignUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED209A1C113BEC00979EB6 /* SimpleDesignUITests.swift */; };
-		D6F52B521C1D41DA00F15C2C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F52B511C1D41DA00F15C2C /* CFNetwork.framework */; };
-		D6F52B541C1D428200F15C2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F52B531C1D428200F15C2C /* UIKit.framework */; };
-		D6F52B561C1D429300F15C2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F52B551C1D429300F15C2C /* Foundation.framework */; };
 		D6F97C901C11F15C0033BC78 /* LocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F97C8F1C11F15C0033BC78 /* LocationRequest.swift */; };
 		E2E99C481C1D41D800658647 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C471C1D41D800658647 /* CFNetwork.framework */; };
 		E2E99C491C1D423200658647 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B03381C1D3C2800FC88BC /* SystemConfiguration.framework */; };
 		E2E99C4B1C1D42EC00658647 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C4A1C1D42EC00658647 /* Firebase.framework */; };
+		E2E99C4F1C1D444200658647 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C4E1C1D444200658647 /* UIKit.framework */; };
+		E2E99C831C1E4CEB00658647 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C821C1E4CEB00658647 /* StoreKit.framework */; };
+		E2E99C851C1E4CF400658647 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C841C1E4CF400658647 /* libc++.1.tbd */; };
+		E2E99C871C1E4D0100658647 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C861C1E4D0100658647 /* libicucore.tbd */; };
+		E2E99C891C1E4D1100658647 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C881C1E4D1100658647 /* Accounts.framework */; };
+		E2E99C8B1C1E4D1900658647 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C8A1C1E4D1900658647 /* Social.framework */; };
+		E2E99C8D1C1E4D2600658647 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C8C1C1E4D2600658647 /* libz.tbd */; };
+		E2E99C8F1C1E4D3200658647 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C8E1C1E4D3200658647 /* libsqlite3.tbd */; };
+		E2E99C911C1E4D5500658647 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C901C1E4D5500658647 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,12 +76,19 @@
 		D6ED20961C113BEC00979EB6 /* SimpleDesignUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleDesignUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ED209A1C113BEC00979EB6 /* SimpleDesignUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDesignUITests.swift; sourceTree = "<group>"; };
 		D6ED209C1C113BEC00979EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6F52B511C1D41DA00F15C2C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		D6F52B531C1D428200F15C2C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D6F52B551C1D429300F15C2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6F97C8F1C11F15C0033BC78 /* LocationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationRequest.swift; path = ../LocationRequest.swift; sourceTree = "<group>"; };
 		E2E99C471C1D41D800658647 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E2E99C4A1C1D42EC00658647 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		E2E99C4C1C1D443400658647 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E2E99C4E1C1D444200658647 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E2E99C821C1E4CEB00658647 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E2E99C841C1E4CF400658647 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		E2E99C861C1E4D0100658647 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		E2E99C881C1E4D1100658647 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		E2E99C8A1C1E4D1900658647 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		E2E99C8C1C1E4D2600658647 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E2E99C8E1C1E4D3200658647 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		E2E99C901C1E4D5500658647 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,11 +96,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E99C911C1E4D5500658647 /* MapKit.framework in Frameworks */,
+				E2E99C8F1C1E4D3200658647 /* libsqlite3.tbd in Frameworks */,
+				E2E99C8D1C1E4D2600658647 /* libz.tbd in Frameworks */,
+				E2E99C8B1C1E4D1900658647 /* Social.framework in Frameworks */,
+				E2E99C891C1E4D1100658647 /* Accounts.framework in Frameworks */,
+				E2E99C871C1E4D0100658647 /* libicucore.tbd in Frameworks */,
+				E2E99C851C1E4CF400658647 /* libc++.1.tbd in Frameworks */,
+				E2E99C831C1E4CEB00658647 /* StoreKit.framework in Frameworks */,
+				E2E99C4F1C1D444200658647 /* UIKit.framework in Frameworks */,
 				E2E99C481C1D41D800658647 /* CFNetwork.framework in Frameworks */,
 				E2E99C491C1D423200658647 /* SystemConfiguration.framework in Frameworks */,
-				D67B03411C1D3C4700FC88BC /* AudioToolbox.framework in Frameworks */,
-				D67B033F1C1D3C4100FC88BC /* CoreGraphics.framework in Frameworks */,
-				D6F52B521C1D41DA00F15C2C /* CFNetwork.framework in Frameworks */,
 				D67B03411C1D3C4700FC88BC /* AudioToolbox.framework in Frameworks */,
 				D67B033D1C1D3C3800FC88BC /* CoreLocation.framework in Frameworks */,
 				D67B033B1C1D3C3200FC88BC /* Security.framework in Frameworks */,
@@ -117,6 +135,16 @@
 		D6ED206E1C113BEC00979EB6 = {
 			isa = PBXGroup;
 			children = (
+				E2E99C901C1E4D5500658647 /* MapKit.framework */,
+				E2E99C8E1C1E4D3200658647 /* libsqlite3.tbd */,
+				E2E99C8C1C1E4D2600658647 /* libz.tbd */,
+				E2E99C8A1C1E4D1900658647 /* Social.framework */,
+				E2E99C881C1E4D1100658647 /* Accounts.framework */,
+				E2E99C861C1E4D0100658647 /* libicucore.tbd */,
+				E2E99C841C1E4CF400658647 /* libc++.1.tbd */,
+				E2E99C821C1E4CEB00658647 /* StoreKit.framework */,
+				E2E99C4E1C1D444200658647 /* UIKit.framework */,
+				E2E99C4C1C1D443400658647 /* Foundation.framework */,
 				E2E99C4A1C1D42EC00658647 /* Firebase.framework */,
 				E2E99C471C1D41D800658647 /* CFNetwork.framework */,
 				D67B03401C1D3C4700FC88BC /* AudioToolbox.framework */,
