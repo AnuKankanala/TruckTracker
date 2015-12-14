@@ -34,6 +34,13 @@
 		E2E99C8D1C1E4D2600658647 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C8C1C1E4D2600658647 /* libz.tbd */; };
 		E2E99C8F1C1E4D3200658647 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C8E1C1E4D3200658647 /* libsqlite3.tbd */; };
 		E2E99C911C1E4D5500658647 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C901C1E4D5500658647 /* MapKit.framework */; };
+		E2E99C9A1C1E51FA00658647 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E99C931C1E51FA00658647 /* ArrayExtension.swift */; };
+		E2E99C9B1C1E51FA00658647 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E99C941C1E51FA00658647 /* NSDateExtension.swift */; };
+		E2E99C9C1C1E51FA00658647 /* NSJSONSerializationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E99C951C1E51FA00658647 /* NSJSONSerializationExtension.swift */; };
+		E2E99C9D1C1E51FA00658647 /* UIAlertViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E99C961C1E51FA00658647 /* UIAlertViewExtension.swift */; };
+		E2E99C9E1C1E51FA00658647 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E99C971C1E51FA00658647 /* UIColorExtension.swift */; };
+		E2E99C9F1C1E51FA00658647 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E99C981C1E51FA00658647 /* UIImageExtension.swift */; };
+		E2E99CA01C1E51FA00658647 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E99C991C1E51FA00658647 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +96,13 @@
 		E2E99C8C1C1E4D2600658647 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		E2E99C8E1C1E4D3200658647 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		E2E99C901C1E4D5500658647 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E2E99C931C1E51FA00658647 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		E2E99C941C1E51FA00658647 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		E2E99C951C1E51FA00658647 /* NSJSONSerializationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSJSONSerializationExtension.swift; sourceTree = "<group>"; };
+		E2E99C961C1E51FA00658647 /* UIAlertViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewExtension.swift; sourceTree = "<group>"; };
+		E2E99C971C1E51FA00658647 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E2E99C981C1E51FA00658647 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		E2E99C991C1E51FA00658647 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +187,7 @@
 		D6ED20791C113BEC00979EB6 /* SimpleDesign */ = {
 			isa = PBXGroup;
 			children = (
+				E2E99C921C1E51DD00658647 /* Extensions */,
 				D6ED207A1C113BEC00979EB6 /* AppDelegate.swift */,
 				D6ED207C1C113BEC00979EB6 /* ViewController.swift */,
 				D6ED207E1C113BEC00979EB6 /* Main.storyboard */,
@@ -203,6 +218,20 @@
 				D6ED209C1C113BEC00979EB6 /* Info.plist */,
 			);
 			path = SimpleDesignUITests;
+			sourceTree = "<group>";
+		};
+		E2E99C921C1E51DD00658647 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E2E99C931C1E51FA00658647 /* ArrayExtension.swift */,
+				E2E99C941C1E51FA00658647 /* NSDateExtension.swift */,
+				E2E99C951C1E51FA00658647 /* NSJSONSerializationExtension.swift */,
+				E2E99C961C1E51FA00658647 /* UIAlertViewExtension.swift */,
+				E2E99C971C1E51FA00658647 /* UIColorExtension.swift */,
+				E2E99C981C1E51FA00658647 /* UIImageExtension.swift */,
+				E2E99C991C1E51FA00658647 /* UIViewExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,9 +371,16 @@
 				D6F97C901C11F15C0033BC78 /* LocationRequest.swift in Sources */,
 				D6ED207D1C113BEC00979EB6 /* ViewController.swift in Sources */,
 				D629BD871C1B3CA5009D00D4 /* SecondVC.swift in Sources */,
+				E2E99C9D1C1E51FA00658647 /* UIAlertViewExtension.swift in Sources */,
 				D6ED207B1C113BEC00979EB6 /* AppDelegate.swift in Sources */,
+				E2E99C9C1C1E51FA00658647 /* NSJSONSerializationExtension.swift in Sources */,
+				E2E99C9B1C1E51FA00658647 /* NSDateExtension.swift in Sources */,
+				E2E99C9A1C1E51FA00658647 /* ArrayExtension.swift in Sources */,
+				E2E99C9E1C1E51FA00658647 /* UIColorExtension.swift in Sources */,
+				E2E99CA01C1E51FA00658647 /* UIViewExtension.swift in Sources */,
 				D629BD891C1B3CDA009D00D4 /* ThirdVC.swift in Sources */,
 				D67B03351C1CF48E00FC88BC /* TrucksshowVC.swift in Sources */,
+				E2E99C9F1C1E51FA00658647 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
