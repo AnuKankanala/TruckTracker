@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ThirdVC: UIViewController {
  
@@ -16,8 +17,17 @@ class ThirdVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WelcomeLabel.text = "Welcome to TruckTracker \(text1)"
         
+        if let user = NSUserDefaults.standardUserDefaults().valueForKey("user") as? String {
+            Firebase(url: "https://trucktracker.firebaseio.com/Users/\(user)").observeEventType(.Value, withBlock: { snapshot -> Void in
+                if let value = snapshot.value as? NSDictionary {
+                    if let name = value["firstName"] as? String {
+                        self.WelcomeLabel.text = "Welcome to TruckTracker \(name)"
+                    }
+                }
+            })
+        }
+        self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
     }
     

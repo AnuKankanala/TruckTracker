@@ -147,15 +147,25 @@ class SecondVC: UIViewController, UITextFieldDelegate {
         if !isNotValid {
             //valid login
             let myRootRef = Firebase(url: "https://trucktracker.firebaseio.com/")
+            self.view.startLoading()
             myRootRef.createUser(self.emailTextField.text, password: self.passwordTextField.text,
                 withValueCompletionBlock: { error, result in
-                    
                     if error != nil {
+                        self.view.stopLoading()
+                        UIAlertView.showAlertView("Error", text: "\(error)", vc: self)
                         // There was an error creating the account
                     } else {
                         let uid = result["uid"] as? String
-                        print("Successfully created user account with uid: \(uid)")
-                        self.performSegueWithIdentifier("showLocation", sender: nil)
+                        NSUserDefaults.standardUserDefaults().setValue(uid!, forKey: "user")
+                        myRootRef.childByAppendingPath("Users/\(uid!)").setValue(["firstName": self.FirstNameTextField.text!,"lastName": self.lastNameTextField.text!,"phone_no": self.phoneNoTextField.text!])
+                        let success = UIAlertController(title: "Success", message: "Successfully created user account with uid: \(uid)", preferredStyle: UIAlertControllerStyle.Alert)
+                        let action = UIAlertAction(title: "Welcome", style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                            self.view.stopLoading()
+                            //print("Successfully created user account with uid: \(uid)")
+                            self.performSegueWithIdentifier("showLocation", sender: nil)
+                        })
+                        success.addAction(action)
+                        self.presentViewController(success, animated: true, completion: nil)
                     }
             })
         }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uo0-DI-khO">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -68,6 +67,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginExistingUser" destination="BYZ-38-t0r" eventType="touchUpInside" id="i4k-B8-a9S"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="If0-P6-Rku">
                                 <rect key="frame" x="116" y="250" width="243" height="30"/>
@@ -85,7 +87,7 @@
                                     <constraint firstAttribute="height" constant="30" id="b28-GH-FKF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqh-qF-Sd5">
                                 <rect key="frame" x="26" y="448" width="323" height="30"/>
@@ -130,6 +132,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="TruckImage" destination="Sc3-WZ-eKQ" id="gR9-V1-sks"/>
+                        <outlet property="emailTF" destination="If0-P6-Rku" id="UhW-lV-pXJ"/>
+                        <outlet property="password" destination="ub3-tB-x3h" id="yOd-Vx-5fm"/>
+                        <segue destination="r7W-Km-TdP" kind="show" identifier="showLocation" id="fDz-Gh-oyO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -720,4 +725,7 @@
         <image name="images" width="325" height="155"/>
         <image name="images-1" width="225" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fDz-Gh-oyO"/>
+    </inferredMetricsTieBreakers>
 </document>
