@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SecondVC: UIViewController, UITextFieldDelegate {
 
@@ -145,7 +146,18 @@ class SecondVC: UIViewController, UITextFieldDelegate {
         
         if !isNotValid {
             //valid login
-            self.performSegueWithIdentifier("showLocation", sender: nil)
+            let myRootRef = Firebase(url: "https://trucktracker.firebaseio.com/")
+            myRootRef.createUser(self.emailTextField.text, password: self.passwordTextField.text,
+                withValueCompletionBlock: { error, result in
+                    
+                    if error != nil {
+                        // There was an error creating the account
+                    } else {
+                        let uid = result["uid"] as? String
+                        print("Successfully created user account with uid: \(uid)")
+                        self.performSegueWithIdentifier("showLocation", sender: nil)
+                    }
+            })
         }
         
     }
