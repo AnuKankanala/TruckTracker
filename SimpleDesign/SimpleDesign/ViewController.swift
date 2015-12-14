@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet var WelcomeLabel: UILabel!
     @IBOutlet var TruckImage: UIImageView!
     
-    var ref = Firebase(url: "https://trucktracker.firebaseio.com/Truck/Menu/Cupcakes")
+    var ref = Firebase(url: "https://trucktracker.firebaseio.com/")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         ref.observeEventType(.Value, withBlock: { snapshot -> Void in
             print("Data in my server is \(snapshot)")
         })
-        //Firebase(url: "https://trucktracker.firebaseio.com/Truck/Menu/Cupcakes")
+        //Firebase(url: "https://trucktracker.firebaseio.com/Truck/Menu/Cupcakes/Item3").setValue("Double-Chocolate")
     }
 
     override func didReceiveMemoryWarning() {
