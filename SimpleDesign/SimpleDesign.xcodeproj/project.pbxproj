@@ -23,12 +23,10 @@
 		D6ED20851C113BEC00979EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6ED20831C113BEC00979EB6 /* LaunchScreen.storyboard */; };
 		D6ED20901C113BEC00979EB6 /* SimpleDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED208F1C113BEC00979EB6 /* SimpleDesignTests.swift */; };
 		D6ED209B1C113BEC00979EB6 /* SimpleDesignUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED209A1C113BEC00979EB6 /* SimpleDesignUITests.swift */; };
+		D6F864241C5DB55000005993 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F864231C5DB55000005993 /* Firebase.framework */; };
 		D6F8FFBA1C5D3B690083F6E1 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F8FFB91C5D3B690083F6E1 /* OrdersViewController.swift */; };
-		D6FBC0991C598ED500CCC047 /* adminloginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBC0981C598ED500CCC047 /* adminloginViewController.swift */; };
-		D6FBC09B1C59956E00CCC047 /* truckloginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBC09A1C59956E00CCC047 /* truckloginViewController.swift */; };
 		E2E99C481C1D41D800658647 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C471C1D41D800658647 /* CFNetwork.framework */; };
 		E2E99C491C1D423200658647 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B03381C1D3C2800FC88BC /* SystemConfiguration.framework */; };
-		E2E99C4B1C1D42EC00658647 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C4A1C1D42EC00658647 /* Firebase.framework */; };
 		E2E99C4F1C1D444200658647 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C4E1C1D444200658647 /* UIKit.framework */; };
 		E2E99C831C1E4CEB00658647 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C821C1E4CEB00658647 /* StoreKit.framework */; };
 		E2E99C851C1E4CF400658647 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C841C1E4CF400658647 /* libc++.1.tbd */; };
@@ -89,11 +87,9 @@
 		D6ED20961C113BEC00979EB6 /* SimpleDesignUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleDesignUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ED209A1C113BEC00979EB6 /* SimpleDesignUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDesignUITests.swift; sourceTree = "<group>"; };
 		D6ED209C1C113BEC00979EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6F864231C5DB55000005993 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		D6F8FFB91C5D3B690083F6E1 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
-		D6FBC0981C598ED500CCC047 /* adminloginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminloginViewController.swift; sourceTree = "<group>"; };
-		D6FBC09A1C59956E00CCC047 /* truckloginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = truckloginViewController.swift; sourceTree = "<group>"; };
 		E2E99C471C1D41D800658647 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		E2E99C4A1C1D42EC00658647 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		E2E99C4C1C1D443400658647 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E2E99C4E1C1D444200658647 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E2E99C821C1E4CEB00658647 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -133,7 +129,7 @@
 				D67B033D1C1D3C3800FC88BC /* CoreLocation.framework in Frameworks */,
 				D67B033B1C1D3C3200FC88BC /* Security.framework in Frameworks */,
 				D67B03371C1D3C1B00FC88BC /* QuartzCore.framework in Frameworks */,
-				E2E99C4B1C1D42EC00658647 /* Firebase.framework in Frameworks */,
+				D6F864241C5DB55000005993 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,11 +159,11 @@
 				E2E99C8A1C1E4D1900658647 /* Social.framework */,
 				E2E99C881C1E4D1100658647 /* Accounts.framework */,
 				E2E99C861C1E4D0100658647 /* libicucore.tbd */,
+				D6F864231C5DB55000005993 /* Firebase.framework */,
 				E2E99C841C1E4CF400658647 /* libc++.1.tbd */,
 				E2E99C821C1E4CEB00658647 /* StoreKit.framework */,
 				E2E99C4E1C1D444200658647 /* UIKit.framework */,
 				E2E99C4C1C1D443400658647 /* Foundation.framework */,
-				E2E99C4A1C1D42EC00658647 /* Firebase.framework */,
 				E2E99C471C1D41D800658647 /* CFNetwork.framework */,
 				D67B03401C1D3C4700FC88BC /* AudioToolbox.framework */,
 				D67B033E1C1D3C4100FC88BC /* CoreGraphics.framework */,
@@ -201,15 +197,13 @@
 				D629BD861C1B3CA5009D00D4 /* SecondVC.swift */,
 				D629BD881C1B3CDA009D00D4 /* ThirdVC.swift */,
 				D6345B651C49BDFB008EE806 /* MenuViewController.swift */,
-				D6FBC0981C598ED500CCC047 /* adminloginViewController.swift */,
-				D6FBC09A1C59956E00CCC047 /* truckloginViewController.swift */,
+				D6F8FFB91C5D3B690083F6E1 /* OrdersViewController.swift */,
 				D6ED207E1C113BEC00979EB6 /* Main.storyboard */,
 				D6ED20811C113BEC00979EB6 /* Assets.xcassets */,
 				D6ED20831C113BEC00979EB6 /* LaunchScreen.storyboard */,
 				D6ED20861C113BEC00979EB6 /* Info.plist */,
 				D607207D1C44493200323596 /* MapAnnotation.swift */,
 				D607207F1C44495E00323596 /* UserLocation.swift */,
-				D6F8FFB91C5D3B690083F6E1 /* OrdersViewController.swift */,
 			);
 			path = SimpleDesign;
 			sourceTree = "<group>";
@@ -385,12 +379,10 @@
 				D629BD871C1B3CA5009D00D4 /* SecondVC.swift in Sources */,
 				E2E99C9D1C1E51FA00658647 /* UIAlertViewExtension.swift in Sources */,
 				D6ED207B1C113BEC00979EB6 /* AppDelegate.swift in Sources */,
-				D6FBC0991C598ED500CCC047 /* adminloginViewController.swift in Sources */,
 				E2E99C9C1C1E51FA00658647 /* NSJSONSerializationExtension.swift in Sources */,
 				D60720801C44495E00323596 /* UserLocation.swift in Sources */,
 				E2E99C9B1C1E51FA00658647 /* NSDateExtension.swift in Sources */,
 				E2E99C9A1C1E51FA00658647 /* ArrayExtension.swift in Sources */,
-				D6FBC09B1C59956E00CCC047 /* truckloginViewController.swift in Sources */,
 				D607207E1C44493200323596 /* MapAnnotation.swift in Sources */,
 				E2E99C9E1C1E51FA00658647 /* UIColorExtension.swift in Sources */,
 				E2E99CA01C1E51FA00658647 /* UIViewExtension.swift in Sources */,
