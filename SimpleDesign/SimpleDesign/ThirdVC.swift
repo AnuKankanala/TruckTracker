@@ -67,9 +67,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
                     } else if self.istruckoperator {
                         self.addresstextField.hidden = false
                         self.LocationOptions.insertSegmentWithTitle("Current", atIndex: 0, animated: false)
-                        self.LocationOptions.insertSegmentWithTitle("Keep Updating", atIndex: 1, animated: false)
                         self.LocationOptions.insertSegmentWithTitle("Use Address", atIndex: 2, animated: false)
-                        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "My Orders", style: UIBarButtonItemStyle.Plain, target: self, action: "showOrders")
                     } else {
                         self.addresstextField.hidden = false
                         self.LocationOptions.insertSegmentWithTitle("Current Location", atIndex: 0, animated: false)
@@ -80,11 +78,10 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
             })
             
             self.location.delegate = self
-            self.location.desiredAccuracy = kCLLocationAccuracyBest
+            self.location.desiredAccuracy = kCLLocationAccuracyBestForNavigation
             self.location.requestWhenInUseAuthorization()
             self.location.startUpdatingLocation()
             self.mapView.showsUserLocation = true
-            
             
             //Truck location
             self.mapView.delegate = self
@@ -99,6 +96,10 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
         switch segment.selectedSegmentIndex {
         case 1:
             self.addresstextField.hidden = false
+            self.location.stopUpdatingLocation()
+        case 0:
+            self.addresstextField.hidden = true
+            self.location.startUpdatingLocation()
         default:
             self.location.startUpdatingLocation()
             self.addresstextField.hidden = true
@@ -224,8 +225,8 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
                 NSUserDefaults.standardUserDefaults().setValue(aAddress, forKey: "UsercustomAddress")
                 //UserLocation.manager.locationManager.stopUpdatingLocation()
                 
-                if save {
-                    //self.saveStoreDetailsInServerWithLocation(location!, address: aAddress)
+                if self.istruckoperator {
+                    self.saveStoreDetailsInServerWithLocation(location!)
                 }
             } else {
                 self.mapView.showsUserLocation = true
@@ -234,6 +235,15 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
             }
         })
     }
+    
+    func saveStoreDetailsInServerWithLocation(location: CLLocation) {
+        if self.mapAnnotation.count > 0 {
+            let truck = self.mapAnnotation[0]
+            Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.title!)/latitude").setValue(location.coordinate.latitude)
+            Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.title!)/longitude").setValue(location.coordinate.longitude)
+        }
+    }
+    
     @IBAction func cancel() {
         if self.isEditMode {
             self.isEditMode = false
@@ -241,26 +251,23 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
             self.LocationOptions.hidden = true
             self.addresstextField.resignFirstResponder()
             self.addresstextField.hidden = true
-            /*if isAdmin {
-                self.getTruckLocations()
-                self.locationOptions.selectedSegmentIndex = UISegmentedControlNoSegment
-            } else {
-                
-            }*/
         }
     }
 
-func addUserAnnotationWithCoordinates(aLocation: CLLocation)
-{
-    if let exists = self.userAnnotation {
-        self.mapView.removeAnnotation(exists)
+    func addUserAnnotationWithCoordinates(aLocation: CLLocation)
+    {
+        if let exists = self.userAnnotation {
+            self.mapView.removeAnnotation(exists)
+        }
+        let aMapAnnotation = MapAnnotation(coordinate: aLocation.coordinate, title: "Me", subtitle: self.LocationOptions.selectedSegmentIndex == 0 ? "Current Location" : self.addresstextField.text!)
+        self.userAnnotation = aMapAnnotation
+        print("Did get new address location")
+        if self.istruckoperator {
+            self.saveStoreDetailsInServerWithLocation(aLocation)
+        }
+            //self.location.stopUpdatingLocation()
+        self.getTruckLocations()
     }
-    let aMapAnnotation = MapAnnotation(coordinate: aLocation.coordinate, title: "Me", subtitle: self.LocationOptions.selectedSegmentIndex == 0 ? "Current Location" : self.addresstextField.text!)
-    self.userAnnotation = aMapAnnotation
-    print("Did get new address location")
-    self.location.stopUpdatingLocation()
-    self.getTruckLocations()
-}
 
     //user location delegate methods
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -271,7 +278,9 @@ func addUserAnnotationWithCoordinates(aLocation: CLLocation)
         let aMapAnnotation = MapAnnotation(coordinate: l!.coordinate, title: "Me", subtitle: "Current Location")
         self.userAnnotation = aMapAnnotation
         print("Did get user location")
-        self.location.stopUpdatingLocation()
+        if self.istruckoperator {
+            self.saveStoreDetailsInServerWithLocation(locations.last!)
+        }
         self.getTruckLocations()
     }
 
@@ -291,9 +300,13 @@ func addUserAnnotationWithCoordinates(aLocation: CLLocation)
         self.mapAnnotation = aLocation
         
         if let exists = self.userAnnotation {
-            var newArray = self.mapAnnotation
-            newArray.append(exists)// add user location
-            self.mapView.showAnnotations(newArray, animated: true)
+            if !self.istruckoperator {
+                var newArray = self.mapAnnotation
+                newArray.append(exists)
+                self.mapView.showAnnotations(newArray, animated: true)
+            } else {
+                self.mapView.showAnnotations([exists], animated: true)
+            }
         }
     }
 
@@ -389,7 +402,7 @@ extension ThirdVC {
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
         for each in views {
             if let ma = each.annotation as? MapAnnotation {
-                if ma.title! == "Me" {
+                if ma.title! == "Me" && !self.istruckoperator{
                     each.tintColor = UIColor.blueColor()
                     //each.image = UIImage(named: "userpin")?.tintWithColor(UIColor.darkPinkCielColor)
                 } else {
