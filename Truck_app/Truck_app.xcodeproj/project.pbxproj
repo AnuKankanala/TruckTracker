@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D677A9801C1FE22A00F5353A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D677A97F1C1FE22A00F5353A /* AppDelegate.swift */; };
+		D677A9821C1FE22A00F5353A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D677A9811C1FE22A00F5353A /* ViewController.swift */; };
+		D677A9851C1FE22A00F5353A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D677A9831C1FE22A00F5353A /* Main.storyboard */; };
+		D677A9871C1FE22A00F5353A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D677A9861C1FE22A00F5353A /* Assets.xcassets */; };
+		D677A98A1C1FE22A00F5353A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D677A9881C1FE22A00F5353A /* LaunchScreen.storyboard */; };
+		D677A9951C1FE22A00F5353A /* Truck_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D677A9941C1FE22A00F5353A /* Truck_appTests.swift */; };
+		D677A9A01C1FE22A00F5353A /* Truck_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D677A99F1C1FE22A00F5353A /* Truck_appUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D677A9911C1FE22A00F5353A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D677A9741C1FE22A00F5353A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D677A97B1C1FE22A00F5353A;
+			remoteInfo = Truck_app;
+		};
+		D677A99C1C1FE22A00F5353A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D677A9741C1FE22A00F5353A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D677A97B1C1FE22A00F5353A;
+			remoteInfo = Truck_app;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D677A97C1C1FE22A00F5353A /* Truck_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Truck_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D677A97F1C1FE22A00F5353A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D677A9811C1FE22A00F5353A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D677A9841C1FE22A00F5353A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D677A9861C1FE22A00F5353A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D677A9891C1FE22A00F5353A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D677A98B1C1FE22A00F5353A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D677A9901C1FE22A00F5353A /* Truck_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Truck_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D677A9941C1FE22A00F5353A /* Truck_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Truck_appTests.swift; sourceTree = "<group>"; };
+		D677A9961C1FE22A00F5353A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D677A99B1C1FE22A00F5353A /* Truck_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Truck_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D677A99F1C1FE22A00F5353A /* Truck_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Truck_appUITests.swift; sourceTree = "<group>"; };
+		D677A9A11C1FE22A00F5353A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D677A9791C1FE22A00F5353A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D677A98D1C1FE22A00F5353A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D677A9981C1FE22A00F5353A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D677A9731C1FE22A00F5353A = {
+			isa = PBXGroup;
+			children = (
+				D677A97E1C1FE22A00F5353A /* Truck_app */,
+				D677A9931C1FE22A00F5353A /* Truck_appTests */,
+				D677A99E1C1FE22A00F5353A /* Truck_appUITests */,
+				D677A97D1C1FE22A00F5353A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D677A97D1C1FE22A00F5353A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D677A97C1C1FE22A00F5353A /* Truck_app.app */,
+				D677A9901C1FE22A00F5353A /* Truck_appTests.xctest */,
+				D677A99B1C1FE22A00F5353A /* Truck_appUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D677A97E1C1FE22A00F5353A /* Truck_app */ = {
+			isa = PBXGroup;
+			children = (
+				D677A97F1C1FE22A00F5353A /* AppDelegate.swift */,
+				D677A9811C1FE22A00F5353A /* ViewController.swift */,
+				D677A9831C1FE22A00F5353A /* Main.storyboard */,
+				D677A9861C1FE22A00F5353A /* Assets.xcassets */,
+				D677A9881C1FE22A00F5353A /* LaunchScreen.storyboard */,
+				D677A98B1C1FE22A00F5353A /* Info.plist */,
+			);
+			path = Truck_app;
+			sourceTree = "<group>";
+		};
+		D677A9931C1FE22A00F5353A /* Truck_appTests */ = {
+			isa = PBXGroup;
+			children = (
+				D677A9941C1FE22A00F5353A /* Truck_appTests.swift */,
+				D677A9961C1FE22A00F5353A /* Info.plist */,
+			);
+			path = Truck_appTests;
+			sourceTree = "<group>";
+		};
+		D677A99E1C1FE22A00F5353A /* Truck_appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D677A99F1C1FE22A00F5353A /* Truck_appUITests.swift */,
+				D677A9A11C1FE22A00F5353A /* Info.plist */,
+			);
+			path = Truck_appUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D677A97B1C1FE22A00F5353A /* Truck_app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D677A9A41C1FE22A00F5353A /* Build configuration list for PBXNativeTarget "Truck_app" */;
+			buildPhases = (
+				D677A9781C1FE22A00F5353A /* Sources */,
+				D677A9791C1FE22A00F5353A /* Frameworks */,
+				D677A97A1C1FE22A00F5353A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Truck_app;
+			productName = Truck_app;
+			productReference = D677A97C1C1FE22A00F5353A /* Truck_app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D677A98F1C1FE22A00F5353A /* Truck_appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D677A9A71C1FE22A00F5353A /* Build configuration list for PBXNativeTarget "Truck_appTests" */;
+			buildPhases = (
+				D677A98C1C1FE22A00F5353A /* Sources */,
+				D677A98D1C1FE22A00F5353A /* Frameworks */,
+				D677A98E1C1FE22A00F5353A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D677A9921C1FE22A00F5353A /* PBXTargetDependency */,
+			);
+			name = Truck_appTests;
+			productName = Truck_appTests;
+			productReference = D677A9901C1FE22A00F5353A /* Truck_appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D677A99A1C1FE22A00F5353A /* Truck_appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D677A9AA1C1FE22A00F5353A /* Build configuration list for PBXNativeTarget "Truck_appUITests" */;
+			buildPhases = (
+				D677A9971C1FE22A00F5353A /* Sources */,
+				D677A9981C1FE22A00F5353A /* Frameworks */,
+				D677A9991C1FE22A00F5353A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D677A99D1C1FE22A00F5353A /* PBXTargetDependency */,
+			);
+			name = Truck_appUITests;
+			productName = Truck_appUITests;
+			productReference = D677A99B1C1FE22A00F5353A /* Truck_appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D677A9741C1FE22A00F5353A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Anusha Kankanala";
+				TargetAttributes = {
+					D677A97B1C1FE22A00F5353A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = MMXMQ9SFM7;
+					};
+					D677A98F1C1FE22A00F5353A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = MMXMQ9SFM7;
+						TestTargetID = D677A97B1C1FE22A00F5353A;
+					};
+					D677A99A1C1FE22A00F5353A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = MMXMQ9SFM7;
+						TestTargetID = D677A97B1C1FE22A00F5353A;
+					};
+				};
+			};
+			buildConfigurationList = D677A9771C1FE22A00F5353A /* Build configuration list for PBXProject "Truck_app" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D677A9731C1FE22A00F5353A;
+			productRefGroup = D677A97D1C1FE22A00F5353A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D677A97B1C1FE22A00F5353A /* Truck_app */,
+				D677A98F1C1FE22A00F5353A /* Truck_appTests */,
+				D677A99A1C1FE22A00F5353A /* Truck_appUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D677A97A1C1FE22A00F5353A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D677A98A1C1FE22A00F5353A /* LaunchScreen.storyboard in Resources */,
+				D677A9871C1FE22A00F5353A /* Assets.xcassets in Resources */,
+				D677A9851C1FE22A00F5353A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D677A98E1C1FE22A00F5353A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D677A9991C1FE22A00F5353A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D677A9781C1FE22A00F5353A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D677A9821C1FE22A00F5353A /* ViewController.swift in Sources */,
+				D677A9801C1FE22A00F5353A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D677A98C1C1FE22A00F5353A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D677A9951C1FE22A00F5353A /* Truck_appTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D677A9971C1FE22A00F5353A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D677A9A01C1FE22A00F5353A /* Truck_appUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D677A9921C1FE22A00F5353A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D677A97B1C1FE22A00F5353A /* Truck_app */;
+			targetProxy = D677A9911C1FE22A00F5353A /* PBXContainerItemProxy */;
+		};
+		D677A99D1C1FE22A00F5353A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D677A97B1C1FE22A00F5353A /* Truck_app */;
+			targetProxy = D677A99C1C1FE22A00F5353A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D677A9831C1FE22A00F5353A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D677A9841C1FE22A00F5353A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D677A9881C1FE22A00F5353A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D677A9891C1FE22A00F5353A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D677A9A21C1FE22A00F5353A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D677A9A31C1FE22A00F5353A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D677A9A51C1FE22A00F5353A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Truck_app/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Anusha-Kankanala.program.Truck-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D677A9A61C1FE22A00F5353A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Truck_app/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Anusha-Kankanala.program.Truck-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D677A9A81C1FE22A00F5353A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = Truck_appTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Anusha-Kankanala.program.Truck-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Truck_app.app/Truck_app";
+			};
+			name = Debug;
+		};
+		D677A9A91C1FE22A00F5353A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = Truck_appTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Anusha-Kankanala.program.Truck-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Truck_app.app/Truck_app";
+			};
+			name = Release;
+		};
+		D677A9AB1C1FE22A00F5353A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Truck_appUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Anusha-Kankanala.program.Truck-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Truck_app;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D677A9AC1C1FE22A00F5353A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Truck_appUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Anusha-Kankanala.program.Truck-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Truck_app;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D677A9771C1FE22A00F5353A /* Build configuration list for PBXProject "Truck_app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D677A9A21C1FE22A00F5353A /* Debug */,
+				D677A9A31C1FE22A00F5353A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D677A9A41C1FE22A00F5353A /* Build configuration list for PBXNativeTarget "Truck_app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D677A9A51C1FE22A00F5353A /* Debug */,
+				D677A9A61C1FE22A00F5353A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D677A9A71C1FE22A00F5353A /* Build configuration list for PBXNativeTarget "Truck_appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D677A9A81C1FE22A00F5353A /* Debug */,
+				D677A9A91C1FE22A00F5353A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D677A9AA1C1FE22A00F5353A /* Build configuration list for PBXNativeTarget "Truck_appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D677A9AB1C1FE22A00F5353A /* Debug */,
+				D677A9AC1C1FE22A00F5353A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D677A9741C1FE22A00F5353A /* Project object */;
+}
