@@ -158,7 +158,7 @@ class SecondVC: UIViewController, UITextFieldDelegate {
                         let uid = result["uid"] as? String
                         NSUserDefaults.standardUserDefaults().setValue(uid!, forKey: "user")
                         myRootRef.childByAppendingPath("Users/\(uid!)").setValue(["firstName": self.FirstNameTextField.text!,"lastName": self.lastNameTextField.text!,"phone_no": self.phoneNoTextField.text!])
-                        let success = UIAlertController(title: "Success", message: "Successfully created user account with uid: \(uid)", preferredStyle: UIAlertControllerStyle.Alert)
+                        let success = UIAlertController(title: "Success", message: "Successfully created user account with emailID: \(self.emailTextField.text)", preferredStyle: UIAlertControllerStyle.Alert)
                         let action = UIAlertAction(title: "Welcome", style: UIAlertActionStyle.Default, handler: {(action) -> Void in
                             self.view.stopLoading()
                             //print("Successfully created user account with uid: \(uid)")

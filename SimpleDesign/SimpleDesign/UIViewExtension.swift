@@ -1,10 +1,7 @@
 //
 //  UIViewExtension.swift
-//  PlayNFLBetting
-//
-//  Created by Vemula, Manoj (Contractor) on 4/2/15.
-//  Copyright (c) 2015 Vemula, Manoj (Contractor). All rights reserved.
-//
+
+
 
 import Foundation
 import UIKit
@@ -52,12 +49,12 @@ extension UIView {
         
         self.stopLoading()
         dispatch_async(dispatch_get_main_queue(), {let loadingView = UIView(frame: self.bounds)
-            loadingView.backgroundColor = UIColor.pinkCielColor.colorWithAlphaComponent(alpha)
+            loadingView.backgroundColor = UIColor.mypinkColor.colorWithAlphaComponent(alpha)
             loadingView.tag = 9999
             
             let indicator = UIActivityIndicatorView(activityIndicatorStyle: indicatorStyle)
             indicator.startAnimating()
-            indicator.color = UIColor.darkPinkCielColor
+            indicator.color = UIColor.mydarkPinkColor
             indicator.center = loadingView.center
             
             

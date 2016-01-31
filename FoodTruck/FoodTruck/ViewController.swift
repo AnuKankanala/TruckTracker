@@ -51,7 +51,7 @@ class ViewController: UIViewController, EditNameDelegate, UITableViewDelegate, U
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40.0
+        return 100.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -63,6 +63,7 @@ class ViewController: UIViewController, EditNameDelegate, UITableViewDelegate, U
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "CELL")
         }
         
+        cell.imageView?.image = UIImage(named: "test")
         cell.textLabel?.text = myArray[indexPath.row]
         cell.detailTextLabel?.text = "A \(indexPath.row)"
         

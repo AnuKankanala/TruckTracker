@@ -56,23 +56,23 @@ extension UIColor
 //        table.tintColor = UIColor.footballColor
     }
     
-    class var blueCielColor : UIColor {
+    class var myblueColor : UIColor {
         return UIColor.colorWithHexString("#5FDEDD", andAlpha: 1)
     }
     
-    class var darkPinkCielColor : UIColor {
+    class var mydarkPinkColor : UIColor {
         return UIColor.colorWithHexString("#FE7BAB", andAlpha: 1)
     }
     
-    class var pinkCielColor : UIColor {
+    class var mypinkColor : UIColor {
         return UIColor.colorWithHexString("#FDD2E1", andAlpha: 1)
     }
     
-    class var cielBackgroundColor : UIColor {
+    class var myBackgroundColor : UIColor {
         return UIColor.colorWithHexString("#FDF4F7", andAlpha: 1)
     }
     
-    class var brownCielColor : UIColor {
+    class var mybrownColor : UIColor {
         return UIColor.colorWithHexString("#6A472C", andAlpha: 1)
     }
     

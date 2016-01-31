@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D607207E1C44493200323596 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607207D1C44493200323596 /* MapAnnotation.swift */; };
+		D60720801C44495E00323596 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607207F1C44495E00323596 /* UserLocation.swift */; };
 		D629BD871C1B3CA5009D00D4 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629BD861C1B3CA5009D00D4 /* SecondVC.swift */; };
 		D629BD891C1B3CDA009D00D4 /* ThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629BD881C1B3CDA009D00D4 /* ThirdVC.swift */; };
-		D67B03351C1CF48E00FC88BC /* TrucksshowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67B03341C1CF48E00FC88BC /* TrucksshowVC.swift */; };
+		D6345B661C49BDFB008EE806 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6345B651C49BDFB008EE806 /* MenuViewController.swift */; };
 		D67B03371C1D3C1B00FC88BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B03361C1D3C1B00FC88BC /* QuartzCore.framework */; };
 		D67B033B1C1D3C3200FC88BC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B033A1C1D3C3200FC88BC /* Security.framework */; };
 		D67B033D1C1D3C3800FC88BC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B033C1C1D3C3800FC88BC /* CoreLocation.framework */; };
@@ -21,7 +23,9 @@
 		D6ED20851C113BEC00979EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6ED20831C113BEC00979EB6 /* LaunchScreen.storyboard */; };
 		D6ED20901C113BEC00979EB6 /* SimpleDesignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED208F1C113BEC00979EB6 /* SimpleDesignTests.swift */; };
 		D6ED209B1C113BEC00979EB6 /* SimpleDesignUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ED209A1C113BEC00979EB6 /* SimpleDesignUITests.swift */; };
-		D6F97C901C11F15C0033BC78 /* LocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F97C8F1C11F15C0033BC78 /* LocationRequest.swift */; };
+		D6F8FFBA1C5D3B690083F6E1 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F8FFB91C5D3B690083F6E1 /* OrdersViewController.swift */; };
+		D6FBC0991C598ED500CCC047 /* adminloginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBC0981C598ED500CCC047 /* adminloginViewController.swift */; };
+		D6FBC09B1C59956E00CCC047 /* truckloginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBC09A1C59956E00CCC047 /* truckloginViewController.swift */; };
 		E2E99C481C1D41D800658647 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C471C1D41D800658647 /* CFNetwork.framework */; };
 		E2E99C491C1D423200658647 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67B03381C1D3C2800FC88BC /* SystemConfiguration.framework */; };
 		E2E99C4B1C1D42EC00658647 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99C4A1C1D42EC00658647 /* Firebase.framework */; };
@@ -61,9 +65,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D607207D1C44493200323596 /* MapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
+		D607207F1C44495E00323596 /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		D629BD861C1B3CA5009D00D4 /* SecondVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
 		D629BD881C1B3CDA009D00D4 /* ThirdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdVC.swift; sourceTree = "<group>"; };
-		D67B03341C1CF48E00FC88BC /* TrucksshowVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrucksshowVC.swift; path = ../TrucksshowVC.swift; sourceTree = "<group>"; };
+		D6345B651C49BDFB008EE806 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		D67B03361C1D3C1B00FC88BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D67B03381C1D3C2800FC88BC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D67B033A1C1D3C3200FC88BC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -83,7 +89,9 @@
 		D6ED20961C113BEC00979EB6 /* SimpleDesignUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleDesignUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ED209A1C113BEC00979EB6 /* SimpleDesignUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDesignUITests.swift; sourceTree = "<group>"; };
 		D6ED209C1C113BEC00979EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6F97C8F1C11F15C0033BC78 /* LocationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationRequest.swift; path = ../LocationRequest.swift; sourceTree = "<group>"; };
+		D6F8FFB91C5D3B690083F6E1 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		D6FBC0981C598ED500CCC047 /* adminloginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminloginViewController.swift; sourceTree = "<group>"; };
+		D6FBC09A1C59956E00CCC047 /* truckloginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = truckloginViewController.swift; sourceTree = "<group>"; };
 		E2E99C471C1D41D800658647 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E2E99C4A1C1D42EC00658647 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		E2E99C4C1C1D443400658647 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,14 +198,18 @@
 				E2E99C921C1E51DD00658647 /* Extensions */,
 				D6ED207A1C113BEC00979EB6 /* AppDelegate.swift */,
 				D6ED207C1C113BEC00979EB6 /* ViewController.swift */,
-				D6ED207E1C113BEC00979EB6 /* Main.storyboard */,
-				D629BD881C1B3CDA009D00D4 /* ThirdVC.swift */,
 				D629BD861C1B3CA5009D00D4 /* SecondVC.swift */,
-				D6F97C8F1C11F15C0033BC78 /* LocationRequest.swift */,
-				D67B03341C1CF48E00FC88BC /* TrucksshowVC.swift */,
+				D629BD881C1B3CDA009D00D4 /* ThirdVC.swift */,
+				D6345B651C49BDFB008EE806 /* MenuViewController.swift */,
+				D6FBC0981C598ED500CCC047 /* adminloginViewController.swift */,
+				D6FBC09A1C59956E00CCC047 /* truckloginViewController.swift */,
+				D6ED207E1C113BEC00979EB6 /* Main.storyboard */,
 				D6ED20811C113BEC00979EB6 /* Assets.xcassets */,
 				D6ED20831C113BEC00979EB6 /* LaunchScreen.storyboard */,
 				D6ED20861C113BEC00979EB6 /* Info.plist */,
+				D607207D1C44493200323596 /* MapAnnotation.swift */,
+				D607207F1C44495E00323596 /* UserLocation.swift */,
+				D6F8FFB91C5D3B690083F6E1 /* OrdersViewController.swift */,
 			);
 			path = SimpleDesign;
 			sourceTree = "<group>";
@@ -302,7 +314,7 @@
 				TargetAttributes = {
 					D6ED20761C113BEC00979EB6 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = MMXMQ9SFM7;
+						DevelopmentTeam = 3TNYZT7AEU;
 					};
 					D6ED208A1C113BEC00979EB6 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -368,18 +380,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6F97C901C11F15C0033BC78 /* LocationRequest.swift in Sources */,
 				D6ED207D1C113BEC00979EB6 /* ViewController.swift in Sources */,
+				D6345B661C49BDFB008EE806 /* MenuViewController.swift in Sources */,
 				D629BD871C1B3CA5009D00D4 /* SecondVC.swift in Sources */,
 				E2E99C9D1C1E51FA00658647 /* UIAlertViewExtension.swift in Sources */,
 				D6ED207B1C113BEC00979EB6 /* AppDelegate.swift in Sources */,
+				D6FBC0991C598ED500CCC047 /* adminloginViewController.swift in Sources */,
 				E2E99C9C1C1E51FA00658647 /* NSJSONSerializationExtension.swift in Sources */,
+				D60720801C44495E00323596 /* UserLocation.swift in Sources */,
 				E2E99C9B1C1E51FA00658647 /* NSDateExtension.swift in Sources */,
 				E2E99C9A1C1E51FA00658647 /* ArrayExtension.swift in Sources */,
+				D6FBC09B1C59956E00CCC047 /* truckloginViewController.swift in Sources */,
+				D607207E1C44493200323596 /* MapAnnotation.swift in Sources */,
 				E2E99C9E1C1E51FA00658647 /* UIColorExtension.swift in Sources */,
 				E2E99CA01C1E51FA00658647 /* UIViewExtension.swift in Sources */,
 				D629BD891C1B3CDA009D00D4 /* ThirdVC.swift in Sources */,
-				D67B03351C1CF48E00FC88BC /* TrucksshowVC.swift in Sources */,
+				D6F8FFBA1C5D3B690083F6E1 /* OrdersViewController.swift in Sources */,
 				E2E99C9F1C1E51FA00658647 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +468,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -496,6 +513,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -520,6 +538,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -527,8 +547,9 @@
 				INFOPLIST_FILE = SimpleDesign/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.anushaKankanala.SimpleDesign;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anushaK.SimpleDesign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -536,6 +557,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -543,8 +566,9 @@
 				INFOPLIST_FILE = SimpleDesign/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.anushaKankanala.SimpleDesign;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anushaK.SimpleDesign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
