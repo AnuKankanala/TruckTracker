@@ -175,7 +175,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func resetValues() {
         self.isOrdering = false
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Order", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrdering")
+        if self.allowsEditing {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Item", style: UIBarButtonItemStyle.Plain, target: self, action: "addNewItem")
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Order", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrdering")
+        }
         self.selectedItems = []
         self.totalPrice = 0
         //self.addMyOrdersButton()
