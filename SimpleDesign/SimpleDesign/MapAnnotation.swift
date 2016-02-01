@@ -10,6 +10,7 @@ class MapAnnotation : NSObject, MKAnnotation {
     var subtitle: String?
     var menu: NSDictionary?
     var phoneNumber: String?
+    var id: String?
     
     init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         self.coordinate = coordinate

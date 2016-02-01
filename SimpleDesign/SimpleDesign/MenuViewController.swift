@@ -16,9 +16,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     var ref = Firebase(url:"https://trucktracker.firebaseio.com/Trucks")
     var itemsDict : [String: NSDictionary] = Dictionary()
     var isOrdering = false
-    var totalPrice = 0
+    var totalPrice: Float = 0.0
     var selectedItems = [String]()
     var ordersDict = NSDictionary()
+    var allowsEditing = false
+    var currentUser = ""
 
     func orderSummary() -> String {
         var temp = ""
@@ -31,11 +33,73 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return temp
     }
+    
+    func showAlertForNewMenuItem(type: String?) {
+        let add = UIAlertController(title: "New Menu Item", message: "Add new menu item, fill the details.", preferredStyle: UIAlertControllerStyle.Alert)
+        add.view.tintColor = UIColor.mydarkPinkColor
+        if let _ = type {} else {
+            add.addTextFieldWithConfigurationHandler({textField in
+                textField.placeholder = "Enter new item type"
+                textField.keyboardType = UIKeyboardType.Alphabet
+                textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
+                textField.returnKeyType = UIReturnKeyType.Next
+            })
+        }
+        add.addTextFieldWithConfigurationHandler({textField in
+            textField.placeholder = "Enter new item name"
+            textField.keyboardType = UIKeyboardType.Alphabet
+            textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
+            textField.returnKeyType = UIReturnKeyType.Next
+        })
+        add.addTextFieldWithConfigurationHandler({textField in
+            textField.placeholder = "Enter new item price"
+            textField.keyboardType = UIKeyboardType.NumberPad
+            textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
+            textField.returnKeyType = UIReturnKeyType.Next
+        })
+        let ok = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: { action in
+            //Update Price
+            if let exist = type {
+                Firebase(url: "https://trucktracker.firebaseio.com/Trucks/\(self.currentTruck.id!)/Menu/\(exist)/\(add.textFields![0].text!)").setValue(Float(add.textFields![1].text!))
+            } else {
+                Firebase(url: "https://trucktracker.firebaseio.com/Trucks/\(self.currentTruck.id!)/Menu/\(add.textFields![0].text!)/\(add.textFields![1].text!)").setValue(Float(add.textFields![2].text!))
+            }
+        })
+        add.addAction(ok)
+        self.presentViewController(add, animated: true, completion: nil)
+    }
+    
+    func addNewItem() {
+        let Type = self.menuDictionary.allKeys as! [String]
+        if Type.count > 0 {
+            let typeAlert = UIAlertController(title: "Choose", message: "Choose a type of menu item", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let new = UIAlertAction(title: "New Type", style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                self.showAlertForNewMenuItem(nil)
+            })
+            typeAlert.addAction(new)
+            for each in Type {
+                let existing = UIAlertAction(title: each, style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                    self.showAlertForNewMenuItem(each)
+                })
+                typeAlert.addAction(existing)
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(action) -> Void in
+            })
+            typeAlert.addAction(cancel)
+            self.presentViewController(typeAlert, animated: true, completion: nil)
+        } else {
+            self.showAlertForNewMenuItem(nil)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startOrdering", name: "order", object: nil)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Order", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrdering")
+        if self.allowsEditing {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Item", style: UIBarButtonItemStyle.Plain, target: self, action: "addNewItem")
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Order", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrdering")
+        }
         if let exists = currentTruck.menu {
             self.menuDictionary = exists
         }
@@ -52,14 +116,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
         // Do any additional setup after loading the view.
         
-        
+        Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(self.currentTruck.id!)/Menu").observeEventType(.Value, withBlock: { snapshot -> Void in
+            //print("User orders are \(snapshot)")
+            if let value = snapshot.value as? NSDictionary {
+                self.menuDictionary = value
+                self.menuTableView.reloadData()
+            }
+            //self.addMyOrdersButton()
+        })
     }
 
     func startOrdering() {
         self.isOrdering = true
         self.selectedItems = []
         self.menuTableView.allowsMultipleSelection = true
-       // self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelOrder")
+       //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelOrder")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Order(0)", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrder")
         self.menuTableView.reloadData()
     }
@@ -68,15 +139,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             UIAlertView.showAlertView("Error", text: "No items selected", vc: self)
         }
         else{
-        let order = UIAlertController(title: "New Order - Pick up", message: "Placing order for \(self.orderSummary())\nTotal price = Rs.\(totalPrice)", preferredStyle: UIAlertControllerStyle.Alert)
-        order.view.tintColor = UIColor.mydarkPinkColor
-        
-
-        Firebase(url:"https://trucktracker.firebaseio.com/Trucks/Truck1/Orders").childByAutoId().setValue(["timestamp": FirebaseServerValue.timestamp(),"Name": "Anusha", "Order": self.orderSummary().stringByReplacingOccurrencesOfString("\n", withString: ""),"id": UIDevice.currentDevice().identifierForVendor!.UUIDString, "status": "NEW", "total": self.totalPrice])
-            
-            UIAlertView.showAlertView("Success", text: "Placed order for \(self.orderSummary()) items. Thank you ", vc: self)
-            self.resetValues()
-           
+            let order = UIAlertController(title: "New Order - Pick up", message: "Placing order for \(self.orderSummary())\nTotal price = Rs.\(totalPrice)", preferredStyle: UIAlertControllerStyle.Alert)
+            order.view.tintColor = UIColor.mydarkPinkColor
+            let place = UIAlertAction(title: "Place order", style: UIAlertActionStyle.Default, handler: {(action) -> Void in
+                Firebase(url:"https://trucktracker.firebaseio.com/Orders").childByAutoId().setValue(["timestamp": FirebaseServerValue.timestamp(),"userID": self.currentUser, "Order": self.orderSummary().stringByReplacingOccurrencesOfString("\n", withString: ""),"id": UIDevice.currentDevice().identifierForVendor!.UUIDString, "status": "NEW", "total": self.totalPrice, "truckID": self.currentTruck.id!])
+                UIAlertView.showAlertView("Success", text: "Placed order for \(self.orderSummary()) items. Thank you ", vc: self)
+                self.resetValues()
+            })
+            order.addAction(place)
+            let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(action) -> Void in
+                self.resetValues()
+            })
+            order.addAction(cancel)
+            self.presentViewController(order, animated: true, completion: nil)
         }
     }
 
@@ -108,22 +183,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.menuTableView.reloadData()
     }
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destinationViewController as? OrdersViewController {
+            vc.currentUser = self.currentUser
+            if self.allowsEditing {
+                vc.truckId = self.currentTruck.id!
+                self.resetValues()
+            }
+        }
     }
-    */
 
 }
 
@@ -136,8 +204,9 @@ extension MenuViewController {
             cell = reuseCell
         } else {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "CELL")
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
+        
+        cell.selectionStyle = self.isOrdering ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
         
         cell.textLabel?.textColor = UIColor.mybrownColor
         cell.textLabel?.highlightedTextColor = UIColor.mydarkPinkColor
@@ -153,15 +222,15 @@ extension MenuViewController {
                     let cost = String(format: "%.2f", value)
                     cell.detailTextLabel?.text = "Price $\(cost)"
                 }
-            }
-            if self.isOrdering{
-                cell.accessoryView = UIImageView(image: UIImage(named: "addcheck")?.tintWithColor(UIColor.lightGrayColor()), highlightedImage: UIImage(named: "addcheck")?.tintWithColor(UIColor.mydarkPinkColor))
-                /*if self.selectedItems.contains("\(keys[indexPath.row])(\(key))") {
-                    cell.setSelected(true, animated: false)
-                } else {
-                    cell.setSelected(false, animated: false)
-                }*/
-
+                if self.isOrdering{
+                    let Type = self.menuDictionary.allKeys[indexPath.section] as! String
+                    cell.accessoryView = UIImageView(image: UIImage(named: "addcheck")?.tintWithColor(UIColor.lightGrayColor()), highlightedImage: UIImage(named: "addcheck")?.tintWithColor(UIColor.mydarkPinkColor))
+                    if self.selectedItems.contains("\(key)(\(Type))") {
+                        cell.setSelected(true, animated: false)
+                    } else {
+                        cell.setSelected(false, animated: false)
+                    }
+                }
             }
         }
         
@@ -171,32 +240,29 @@ extension MenuViewController {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if isOrdering {
+            let Type = self.menuDictionary.allKeys[indexPath.section] as! String
             if let currentMenuOption = menuDictionary[menuDictionary.allKeys[indexPath.section] as! String] as? NSDictionary {
                 if let key = currentMenuOption.allKeys[indexPath.row] as? String {
-                    if let item = self.itemsDict[key] {
-                        let keys = item.allKeys as! [String]
-                        let object = item[keys[indexPath.row]] as! NSDictionary
-                        let price = object["price"] as! Int
-                        totalPrice += price
-                        self.selectedItems.append("\(keys[indexPath.row])(\(key))")
-                        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Order(\(self.selectedItems.count))", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrder")
-                    }
+                    let price = currentMenuOption[currentMenuOption.allKeys[indexPath.row] as! String] as! Float
+                    //let price = currentMenuOption[object] as! Float
+                    totalPrice += price
+                    self.selectedItems.append("\(key)(\(Type))")
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Order(\(self.selectedItems.count))", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrder")
                 } else {
                     self.menuTableView.deselectRowAtIndexPath(indexPath, animated: false)
                 }
-            }  }
+            }
+        }
     }
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let Type = self.menuDictionary.allKeys[indexPath.section] as! String
         if let currentMenuOption = menuDictionary[menuDictionary.allKeys[indexPath.section] as! String] as? NSDictionary {
             if let key = currentMenuOption.allKeys[indexPath.row] as? String {
-        if let item = self.itemsDict[key] {
-            let keys = item.allKeys as! [String]
-            let object = item[keys[indexPath.row]] as! NSDictionary
-            let price = object["price"] as! Int
-            totalPrice -= price
-            self.selectedItems.removeObject(&self.selectedItems, object: "\(keys[indexPath.row])(\(key))")
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Order(\(self.selectedItems.count))", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrder")
-        }
+                let price = currentMenuOption[currentMenuOption.allKeys[indexPath.row] as! String] as! Float
+                //let price = currentMenuOption[object] as! Float
+                totalPrice -= price
+                self.selectedItems.removeObject(&self.selectedItems, object: "\(key)(\(Type))")
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Order(\(self.selectedItems.count))", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrder")
             }
         }
     }
@@ -217,6 +283,67 @@ extension MenuViewController {
     }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return menuDictionary.allKeys[section] as? String
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        var buttons = [UITableViewRowAction]()
+        let button = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Change Price") { (action, indexPath) -> Void in
+            let Type = self.menuDictionary.allKeys[indexPath.section] as! String
+            if let currentMenuOption = self.menuDictionary[Type] as? NSDictionary {
+                if let key = currentMenuOption.allKeys[indexPath.row] as? String {
+                    if let value = currentMenuOption[key] as? CGFloat {
+                        let cost = String(format: "%.2f", value)
+                        let add = UIAlertController(title: "\(key)(\(Type))", message: "Would you like to change the price of \(key) $\(cost) ?", preferredStyle: UIAlertControllerStyle.Alert)
+                        add.view.tintColor = UIColor.mydarkPinkColor
+                        add.addTextFieldWithConfigurationHandler({textField in
+                            textField.placeholder = "Enter new price"
+                            textField.keyboardType = UIKeyboardType.NumberPad
+                            textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
+                            textField.returnKeyType = UIReturnKeyType.Next
+                        })
+                        let ok = UIAlertAction(title: "Change", style: UIAlertActionStyle.Default, handler: { action in
+                            //Update Price
+                            if let value = add.textFields![0].text {
+                                Firebase(url: "https://trucktracker.firebaseio.com/Trucks/\(self.currentTruck.id!)/Menu/\(Type)/\(key)").setValue(Float(value))
+                            }
+                        })
+                        add.addAction(ok)
+                        self.presentViewController(add, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        button.backgroundColor = UIColor.greenColor()
+        buttons.append(button)
+        
+        let button1 = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete") { (action, indexPath) -> Void in
+            let Type = self.menuDictionary.allKeys[indexPath.section] as! String
+            if let currentMenuOption = self.menuDictionary[Type] as? NSDictionary {
+                if let key = currentMenuOption.allKeys[indexPath.row] as? String {
+                    let add = UIAlertController(title: "\(key)(\(Type))", message: "Would you like to delete \(key)?", preferredStyle: UIAlertControllerStyle.Alert)
+                    add.view.tintColor = UIColor.mydarkPinkColor
+                    let ok = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: { action in
+                        //Delete Item
+                        Firebase(url: "https://trucktracker.firebaseio.com/Trucks/\(self.currentTruck.id!)/Menu/\(Type)/\(key)").setValue(nil)
+                    })
+                    add.addAction(ok)
+                    
+                    let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { action in
+                    })
+                    add.addAction(cancel)
+                    
+                    self.presentViewController(add, animated: true, completion: nil)
+                }
+            }
+        }
+        button1.backgroundColor = UIColor.redColor()
+        buttons.append(button1)
+        
+        return buttons
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return self.allowsEditing
     }
 }
 

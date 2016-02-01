@@ -432,26 +432,44 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SHC-ZH-29R">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="559"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tug-7s-bcz">
+                                <rect key="frame" x="56" y="20" width="263" height="40"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EdN-Gf-tsT"/>
+                                </constraints>
+                                <state key="normal" title="My Orders">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="wsW-qb-03N" kind="show" id="cfj-PH-tZy"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SHC-ZH-29R">
+                                <rect key="frame" x="-4" y="80" width="383" height="479"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="aB6-S3-rgo" id="5KF-Qa-fny"/>
-                                    <outlet property="delegate" destination="aB6-S3-rgo" id="cse-Hz-Sgg"/>
+                                    <outlet property="dataSource" destination="aB6-S3-rgo" id="vAt-34-Wdc"/>
+                                    <outlet property="delegate" destination="aB6-S3-rgo" id="HCq-e3-BbZ"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ro6-iH-jpN" firstAttribute="top" secondItem="SHC-ZH-29R" secondAttribute="bottom" id="Bbg-IN-dff"/>
+                            <constraint firstItem="SHC-ZH-29R" firstAttribute="top" secondItem="Tug-7s-bcz" secondAttribute="bottom" constant="20" id="JiG-6u-B47"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="top" secondItem="xKo-QQ-h32" secondAttribute="bottom" id="JoN-4W-BE6"/>
+                            <constraint firstItem="Tug-7s-bcz" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" constant="40" id="N90-YU-xws"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SHC-ZH-29R" secondAttribute="trailing" constant="-20" id="P6M-0z-xwM"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" constant="-20" id="lnv-kT-AAw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tug-7s-bcz" secondAttribute="trailing" constant="40" id="o2u-95-FKe"/>
+                            <constraint firstItem="Tug-7s-bcz" firstAttribute="top" secondItem="xKo-QQ-h32" secondAttribute="bottom" constant="20" id="qzx-VS-Lpb"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" id="sfB-Ge-sJp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SHC-ZH-29R" secondAttribute="trailing" id="xsJ-3J-UUR"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="JoN-4W-BE6"/>
                                 <exclude reference="sfB-Ge-sJp"/>
                                 <exclude reference="xsJ-3J-UUR"/>
                             </mask>
@@ -462,7 +480,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="menuTableView" destination="SHC-ZH-29R" id="vqx-ew-NLa"/>
-                        <segue destination="wsW-qb-03N" kind="show" identifier="showMyOrders" id="Cyc-tr-kVy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cz4-ue-QPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,12 +495,16 @@
                         <viewControllerLayoutGuide type="bottom" id="nD7-cG-DBm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1oC-IZ-p9W">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="78g-0c-ImJ">
-                                <rect key="frame" x="-4" y="64" width="383" height="565"/>
+                                <rect key="frame" x="-4" y="0.0" width="383" height="565"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wsW-qb-03N" id="eoE-Mi-nf5"/>
+                                    <outlet property="delegate" destination="wsW-qb-03N" id="05u-0s-hsx"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -494,6 +515,7 @@
                             <constraint firstItem="78g-0c-ImJ" firstAttribute="top" secondItem="Irx-nX-a1C" secondAttribute="bottom" id="pCA-YU-t1i"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ordersTable" destination="78g-0c-ImJ" id="a0B-dj-C5F"/>

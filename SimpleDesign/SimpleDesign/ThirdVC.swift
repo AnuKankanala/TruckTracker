@@ -169,7 +169,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
                             //Create a new truck
                             var newdict = [String: AnyObject]()
                             newdict = ["email": add.textFields![0].text!,"password": add.textFields![1].text!,"Name": add.textFields![2].text!,"Time": add.textFields![3].text!,"phoneNumber": add.textFields![6].text!, "latitude": Float(add.textFields![4].text!)!,"longitude": Float(add.textFields![5].text!)!,"truckDriver": uid]
-                            myref.childByAppendingPath(add.textFields![2].text!).setValue(newdict)
+                            myref.childByAutoId().setValue(newdict)
                             self.view.stopLoading()
                             dispatch_async(dispatch_get_main_queue(), {
                                 self.view.stopLoading()
@@ -239,8 +239,8 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
     func saveStoreDetailsInServerWithLocation(location: CLLocation) {
         if self.mapAnnotation.count > 0 {
             let truck = self.mapAnnotation[0]
-            Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.title!)/latitude").setValue(location.coordinate.latitude)
-            Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.title!)/longitude").setValue(location.coordinate.longitude)
+            Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/latitude").setValue(location.coordinate.latitude)
+            Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/longitude").setValue(location.coordinate.longitude)
         }
     }
     
@@ -281,7 +281,9 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
         if self.istruckoperator {
             self.saveStoreDetailsInServerWithLocation(locations.last!)
         }
-        self.getTruckLocations()
+        if istruckoperator || self.mapAnnotation.count == 0 {
+            self.getTruckLocations()
+        }
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -322,6 +324,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
                             if let long = value["longitude"] as? Double {
                                 let location = CLLocation(latitude: lat, longitude: long)
                                 let aMapAnnotation = MapAnnotation(coordinate: location.coordinate, title: truckname, subtitle: sub)
+                                aMapAnnotation.id = key as! String
                                 if let menu = value["Menu"] as? NSDictionary {
                                     aMapAnnotation.menu = menu
                                 }
@@ -368,6 +371,8 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
         if let vc = segue.destinationViewController as? MenuViewController {
             if let truck = sender as? MapAnnotation {
                 vc.currentTruck = truck
+                vc.allowsEditing = self.istruckoperator || self.isadmin
+                vc.currentUser = self.currentUserId
             }
         }
     }
@@ -456,9 +461,13 @@ extension ThirdVC {
         truckFeatures.addAction(call)
         
         let order = UIAlertAction(title: "Menu", style: UIAlertActionStyle.Default, handler: { action in
-            for each in self.mapAnnotation {
-                if each == view.annotation as? MapAnnotation {
-                    self.performSegueWithIdentifier("showMenu", sender: each)
+            if self.istruckoperator {
+                self.performSegueWithIdentifier("showMenu", sender: self.mapAnnotation[0])
+            } else {
+                for each in self.mapAnnotation {
+                    if each == view.annotation as? MapAnnotation {
+                        self.performSegueWithIdentifier("showMenu", sender: each)
+                    }
                 }
             }
         })
