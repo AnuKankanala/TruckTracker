@@ -65,6 +65,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
                     if self.isadmin {
                         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "addcheck"), style: UIBarButtonItemStyle.Plain, target: self, action: "addTruck")
                     } else if self.istruckoperator {
+                        self.doneMapSettings()
                         self.addresstextField.hidden = false
                         self.LocationOptions.insertSegmentWithTitle("Current", atIndex: 0, animated: false)
                         self.LocationOptions.insertSegmentWithTitle("Use Address", atIndex: 2, animated: false)
@@ -151,6 +152,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
             textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
             textField.returnKeyType = UIReturnKeyType.Next
         })
+       
         let ok = UIAlertAction(title: "ADD ", style: UIAlertActionStyle.Default, handler: { action in
             self.view.startLoading()
             //Create a Truck Driver
@@ -180,8 +182,17 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
             })
         })
         add.addAction(ok)
+        /*let nothing = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { action in
+        })
+        add.addAction(nothing)
+        self.presentViewController(add, animated: true, completion: {
+            add.view.tintColor = UIColor.mydarkPinkColor
+        })*/
         self.presentViewController(add, animated: true, completion: nil)
+    
+
     }
+    
     
     func logout() {
         let logout = UIAlertController(title: "Logout", message: "Would you like to logout of the app?", preferredStyle: UIAlertControllerStyle.Alert)

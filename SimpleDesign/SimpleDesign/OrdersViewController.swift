@@ -63,10 +63,18 @@ extension OrdersViewController{
             if let order = currentMenuOption["Order"] as? String {
                 cell.textLabel?.text = order
                 if let value = currentMenuOption["total"] as? CGFloat {
+                    if let date = currentMenuOption["timestamp"] as? Double{
                     let cost = String(format: "%.2f", value)
-                    cell.detailTextLabel?.text = "Price $\(cost)"
+                    var temp = NSDate.getDefaultTimeUsingGMTDoubleValue(date, dateFormat: "MM/d/yyyy h.mm aa")
+                        temp = "\(temp),total price $.\(cost)"
+
+                    cell.detailTextLabel?.text = temp
+                    //cell.detailTextLabel?.text = "Price $\(cost)"
+                    }
                 }
+                
             }
+            
         }
         
         
