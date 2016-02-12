@@ -383,7 +383,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
             if let truck = sender as? MapAnnotation {
                 vc.currentTruck = truck
                 vc.allowsEditing = self.istruckoperator || self.isadmin
-                vc.currentUser = self.currentUserId
+                vc.currentUserID = self.currentUserId
             }
         }
     }

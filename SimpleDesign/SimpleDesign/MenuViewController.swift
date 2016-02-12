@@ -20,7 +20,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     var selectedItems = [String]()
     var ordersDict = NSDictionary()
     var allowsEditing = false
-    var currentUser = ""
+    var currentUserID = ""
+    var currentUserName = ""
 
     func orderSummary() -> String {
         var temp = ""
@@ -142,7 +143,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             let order = UIAlertController(title: "New Order - Pick up", message: "Placing order for \(self.orderSummary())\nTotal price = Rs.\(totalPrice)", preferredStyle: UIAlertControllerStyle.Alert)
             order.view.tintColor = UIColor.mydarkPinkColor
             let place = UIAlertAction(title: "Place order", style: UIAlertActionStyle.Default, handler: {(action) -> Void in
-                Firebase(url:"https://trucktracker.firebaseio.com/Orders").childByAutoId().setValue(["timestamp": FirebaseServerValue.timestamp(),"userID": self.currentUser, "Order": self.orderSummary().stringByReplacingOccurrencesOfString("\n", withString: ""),"id": UIDevice.currentDevice().identifierForVendor!.UUIDString, "status": "NEW", "total": self.totalPrice, "truckID": self.currentTruck.id!])
+                Firebase(url:"https://trucktracker.firebaseio.com/Orders").childByAutoId().setValue(["timestamp": FirebaseServerValue.timestamp(),"userID": self.currentUserID, "Order": self.orderSummary().stringByReplacingOccurrencesOfString("\n", withString: ""),"id": UIDevice.currentDevice().identifierForVendor!.UUIDString, "status": "NEW", "total": self.totalPrice, "truckID": self.currentTruck.id!])
                 UIAlertView.showAlertView("Success", text: "Placed order for \(self.orderSummary()) items. Thank you ", vc: self)
                 self.resetValues()
             })
@@ -189,7 +190,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? OrdersViewController {
-            vc.currentUser = self.currentUser
+            vc.currentUser = self.currentUserID
             if self.allowsEditing {
                 vc.truckId = self.currentTruck.id!
                 self.resetValues()
