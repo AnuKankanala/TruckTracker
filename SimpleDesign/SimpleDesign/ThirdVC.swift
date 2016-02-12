@@ -458,7 +458,9 @@ extension ThirdVC {
                 }
             }
         })
-        truckFeatures.addAction(call)
+        if !self.istruckoperator {
+            truckFeatures.addAction(call)
+        }
         
         let order = UIAlertAction(title: "Menu", style: UIAlertActionStyle.Default, handler: { action in
             if self.istruckoperator {
@@ -515,7 +517,9 @@ extension ThirdVC {
                 })
             }
         })
-        truckFeatures.addAction(directions)
+         if !self.istruckoperator {
+            truckFeatures.addAction(directions)
+        }
         
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { action in
         })
