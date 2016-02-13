@@ -79,7 +79,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
             })
             
             self.location.delegate = self
-            self.location.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+            self.location.desiredAccuracy = kCLLocationAccuracyKilometer
             self.location.requestWhenInUseAuthorization()
             self.location.startUpdatingLocation()
             self.mapView.showsUserLocation = true
@@ -247,11 +247,23 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
         })
     }
     
+    var savetimer = NSTimer()
+    
     func saveStoreDetailsInServerWithLocation(location: CLLocation) {
-        if self.mapAnnotation.count > 0 {
+        if let saveDate = NSUserDefaults.standardUserDefaults().objectForKey("SaveDate") as? NSDate {
+            print("time difference is \(NSDate().timeIntervalSinceDate(saveDate))")
+            if NSDate().timeIntervalSinceDate(saveDate) > 10 {
+                let truck = self.mapAnnotation[0]
+                Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/latitude").setValue(location.coordinate.latitude)
+                Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/longitude").setValue(location.coordinate.longitude)
+                NSUserDefaults.standardUserDefaults().setValue(NSDate(), forKey: "SaveDate")
+                self.getTruckLocations()
+            }
+        } else if self.mapAnnotation.count > 0 {
             let truck = self.mapAnnotation[0]
             Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/latitude").setValue(location.coordinate.latitude)
             Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/longitude").setValue(location.coordinate.longitude)
+            NSUserDefaults.standardUserDefaults().setValue(NSDate(), forKey: "SaveDate")
         }
     }
     
@@ -292,7 +304,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
         if self.istruckoperator {
             self.saveStoreDetailsInServerWithLocation(locations.last!)
         }
-        if istruckoperator || self.mapAnnotation.count == 0 {
+        if self.mapAnnotation.count == 0 {
             self.getTruckLocations()
         }
     }
@@ -328,7 +340,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
         if let trucks = snapshot.value as? NSDictionary {
             var locations = [MapAnnotation]()
             for (key, value) in trucks {
-                print("current key is \(key)")
+                //print("current key is \(key)")
                 if let truckname =  value["Name"] as? String {
                     if let sub = value["Time"] as? String {
                         if let lat = value["latitude"] as? Double {
