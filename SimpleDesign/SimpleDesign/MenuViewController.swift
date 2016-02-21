@@ -130,18 +130,27 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                         if let currentStatus = value["status"] as? String {
                             if let newOrderUpdate = newValue[key as! String] as? NSDictionary {
                                 if let newStatus = newOrderUpdate["status"] as? String {
-                                    if newStatus != currentStatus {
+                                    if newStatus != currentStatus && newStatus == "DONE" {
                                         if let counter = NSUserDefaults.standardUserDefaults().objectForKey("NewUpdates") as? Int {
                                             NSUserDefaults.standardUserDefaults().setObject(counter + 1, forKey: "NewUpdates")
+                                            if let orderinfo = value["Order"] as? String {
+                                                if newStatus == "DONE" {
+                                                    UIAlertView.showAlertView("Order Update", text: "Your order \(orderinfo) is now Ready for pick up", vc: self)
+                                                }
+                                            }
                                         } else {
                                             NSUserDefaults.standardUserDefaults().setObject(1, forKey: "NewUpdates")
+                                            if let orderinfo = value["Order"] as? String {
+                                                if newStatus == "DONE" {
+                                                    UIAlertView.showAlertView("Order Update", text: "Your order \(orderinfo) is now Ready for Pick up", vc: self)
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                    self.updateOrderNotifications()
                 }
                 self.ordersDict = newValue
             }

@@ -29,6 +29,8 @@ class OrdersViewController: UIViewController {
                 //print("User orders are \(snapshot)")
                 if let value = snapshot.value as? NSDictionary {
                     self.myOrders = value
+                    //self.myOrders = value.allValues as! [NSDictionary]
+                    //self.myOrders = self.myOrders.sort{return $0["timestamp"] as! Double >  $1["timestamp"] as! Double}
                     self.ordersTable.reloadData()
                 }
             })
