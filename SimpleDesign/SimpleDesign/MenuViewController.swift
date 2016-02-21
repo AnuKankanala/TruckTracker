@@ -66,7 +66,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 Firebase(url: "https://trucktracker.firebaseio.com/Trucks/\(self.currentTruck.id!)/Menu/\(add.textFields![0].text!)/\(add.textFields![1].text!)").setValue(Float(add.textFields![2].text!))
             }
         })
+        let nothing = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { action in
+            self.view.stopLoading()})
         add.addAction(ok)
+        add.addAction(nothing)
         self.presentViewController(add, animated: true, completion: nil)
     }
     

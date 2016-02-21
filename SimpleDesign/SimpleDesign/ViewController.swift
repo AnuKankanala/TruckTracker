@@ -70,7 +70,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     // We are now logged in
                     self.updateUser(authData)
-                    let success = UIAlertController(title: "Success", message: "Successfully Logged into user account with your uid: \(authData.uid)", preferredStyle: UIAlertControllerStyle.Alert)
+                    let success = UIAlertController(title: "Success", message: "Successfully Logged into user account with your emailID: \(self.emailTF.text)", preferredStyle: UIAlertControllerStyle.Alert)
                     let action = UIAlertAction(title: "Welcome back", style: UIAlertActionStyle.Default, handler: {(action) -> Void in
                         self.view.stopLoading()//print("Successfully created user account with uid: \(uid)")
                     })

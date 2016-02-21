@@ -66,11 +66,11 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
                         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "addcheck"), style: UIBarButtonItemStyle.Plain, target: self, action: "addTruck")
                     } else if self.istruckoperator {
                         self.doneMapSettings()
-                        self.addresstextField.hidden = false
+                        self.addresstextField.hidden = true
                         self.LocationOptions.insertSegmentWithTitle("Current", atIndex: 0, animated: false)
-                        self.LocationOptions.insertSegmentWithTitle("Use Address", atIndex: 2, animated: false)
+                        self.LocationOptions.insertSegmentWithTitle("Use Address", atIndex: 1, animated: false)
                     } else {
-                        self.addresstextField.hidden = false
+                        self.addresstextField.hidden = true
                         self.LocationOptions.insertSegmentWithTitle("Current Location", atIndex: 0, animated: false)
                         self.LocationOptions.insertSegmentWithTitle("Use Address", atIndex: 1, animated: false)
                         self.doneMapSettings()
@@ -181,16 +181,15 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
                     }
             })
         })
+        let nothing = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { action in
+        self.view.stopLoading()})
+        
+        
         add.addAction(ok)
-        /*let nothing = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { action in
-        })
         add.addAction(nothing)
-        self.presentViewController(add, animated: true, completion: {
-            add.view.tintColor = UIColor.mydarkPinkColor
-        })*/
-        self.presentViewController(add, animated: true, completion: nil)
-    
 
+        self.presentViewController(add, animated: true, completion: nil)
+        
     }
     
     
@@ -234,7 +233,6 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
                 self.mapView.showsUserLocation = false
                 self.addUserAnnotationWithCoordinates(location!)
                 NSUserDefaults.standardUserDefaults().setValue(aAddress, forKey: "UsercustomAddress")
-                //UserLocation.manager.locationManager.stopUpdatingLocation()
                 
                 if self.istruckoperator {
                     self.saveStoreDetailsInServerWithLocation(location!)
@@ -432,7 +430,6 @@ extension ThirdVC {
             if let ma = each.annotation as? MapAnnotation {
                 if ma.title! == "Me" && !self.istruckoperator{
                     each.tintColor = UIColor.blueColor()
-                    //each.image = UIImage(named: "userpin")?.tintWithColor(UIColor.darkPinkCielColor)
                 } else {
                     each.tintColor = UIColor.orangeColor()
                     each.image = UIImage(named: "truckIcon")?.tintWithColor(UIColor.redColor())
@@ -508,8 +505,9 @@ extension ThirdVC {
                 if let _ = self.userAnnotation {
                     findDirections = true
                 } else {
-                    UIAlertView.showAlertView("Location not authorized", text: " needs you to give access to location for providing directions to the truck. Settings -> Ciel -> Turn on Location For 'Ciel' ", vc: self)
+                    UIAlertView.showAlertView("Location not authorized", text: " needs you to give access to location for providing directions to the truck. Settings -> Food Truck Tracker -> Turn on Location For 'Food Truck Tracker' ", vc: self)
                 }
+                
             }
             if findDirections {
                 let google = UIAlertAction(title: "Google Maps", style: UIAlertActionStyle.Default, handler: { action in
