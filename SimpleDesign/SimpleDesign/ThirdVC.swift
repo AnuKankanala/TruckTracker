@@ -328,18 +328,23 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
             if !self.istruckoperator {
                 var newArray = self.mapAnnotation
                 newArray.append(exists)
-                if self.mapView.annotations.count > 1 {
+                if self.mapView.annotations.count > 1 && self.mapView.annotations.count != self.mapAnnotation.count {
                     for each in self.mapView.annotations {
                         if let myAnnotation = each as? MapAnnotation {
+                            var found = false
                             for new in self.mapAnnotation {
                                 if let annotationID = myAnnotation.id {
                                     if annotationID == new.id! {
+                                        found = true
                                         if myAnnotation.coordinate.latitude == new.coordinate.latitude && myAnnotation.coordinate.longitude == new.coordinate.longitude {} else {
                                             self.mapView.removeAnnotation(each)
                                             self.mapView.addAnnotation(new)
                                         }
                                     }
                                 }
+                            }
+                            if !found {
+                                self.mapView.removeAnnotation(each)
                             }
                         }
                     }
@@ -476,8 +481,10 @@ extension ThirdVC {
                 
                 let deleteTruck = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: { action in
                     for each in self.mapAnnotation {
-                        if each == view.annotation as? MapAnnotation {
-                            Firebase(url: "https://trucktracker.firebaseio.com/Trucks/\(each.title!)").setValue(nil)
+                        if let myannotation = view.annotation as? MapAnnotation {
+                            if each.id! == myannotation.id! {
+                                Firebase(url: "https://trucktracker.firebaseio.com/Trucks/\(each.id!)").setValue(nil)
+                            }
                         }
                     }
                     })
@@ -495,8 +502,10 @@ extension ThirdVC {
         
         let call = UIAlertAction(title: "Call Truck", style: UIAlertActionStyle.Default, handler: { action in
             for each in self.mapAnnotation {
-                if each == view.annotation as? MapAnnotation {
-                    UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(each.phoneNumber!)")!)
+                if let myannotation = view.annotation as? MapAnnotation {
+                    if each.id! == myannotation.id! {
+                        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(each.phoneNumber!)")!)
+                    }
                 }
             }
         })
