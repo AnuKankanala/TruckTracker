@@ -198,6 +198,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
         logout.view.tintColor = UIColor.redColor()
         
         let call = UIAlertAction(title: "Logout", style: UIAlertActionStyle.Destructive, handler: { action in
+            self.location.stopUpdatingLocation()
             Firebase(url:"https://trucktracker.firebaseio.com").unauth()
             self.navigationController?.popToRootViewControllerAnimated(false)
         })

@@ -30,7 +30,7 @@ class OrdersTVCell: UITableViewCell {
             }
             
             if let date = order["timestamp"] as? Double{
-                self.dateLabel.text = NSDate.getDefaultTimeUsingGMTDoubleValue(date, dateFormat: "M/d/yy h.mm aa")
+                self.dateLabel.text = NSDate.getDefaultTimeUsingGMTDoubleValue(date, dateFormat: "M/d/yy h:mm aa")
             }
             
             if let value = order["total"] as? CGFloat {

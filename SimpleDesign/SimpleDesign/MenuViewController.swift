@@ -128,7 +128,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.updateOrderNotifications()
                     }
                 } else {
-                    self.totalSales = 0.0
                     for (key,value) in self.ordersDict {
                         print("Current key is \(key)")
                         if let currentStatus = value["status"] as? String {
@@ -158,7 +157,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
                 
                 self.ordersDict = newValue
-                
+                self.totalSales = 0.0
                 for (key,value) in self.ordersDict {
                     print("Current key is \(key)")
                     if let currentStatus = value["status"] as? String {
