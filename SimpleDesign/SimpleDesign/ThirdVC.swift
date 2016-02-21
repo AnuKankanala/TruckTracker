@@ -545,8 +545,10 @@ extension ThirdVC {
             if findDirections {
                 let google = UIAlertAction(title: "Google Maps", style: UIAlertActionStyle.Default, handler: { action in
                     for each in self.mapAnnotation {
-                        if each == view.annotation as? MapAnnotation {
-                            UIApplication.sharedApplication().openURL(NSURL(string: "comgooglemaps://?saddr=\(self.userAnnotation!.coordinate.latitude),\(self.userAnnotation!.coordinate.longitude)&daddr=\(each.coordinate.latitude),\(each.coordinate.longitude)&directionsmode=driving")!)
+                        if let myannotation = view.annotation as? MapAnnotation {
+                            if each.id! == myannotation.id! {
+                                UIApplication.sharedApplication().openURL(NSURL(string: "comgooglemaps://?saddr=\(self.userAnnotation!.coordinate.latitude),\(self.userAnnotation!.coordinate.longitude)&daddr=\(each.coordinate.latitude),\(each.coordinate.longitude)&directionsmode=driving")!)
+                            }
                         }
                     }
                 })
@@ -555,8 +557,10 @@ extension ThirdVC {
                 }
                 let apple = UIAlertAction(title: "Apple Maps", style: UIAlertActionStyle.Default, handler: { action in
                     for each in self.mapAnnotation {
-                        if each == view.annotation as? MapAnnotation {
-                            UIApplication.sharedApplication().openURL(NSURL(string: "http://maps.apple.com/?saddr=\(self.userAnnotation!.coordinate.latitude),\(self.userAnnotation!.coordinate.longitude)&daddr=\(each.coordinate.latitude),\(each.coordinate.longitude)&dirflg=d")!)
+                        if let myannotation = view.annotation as? MapAnnotation {
+                            if each.id! == myannotation.id! {
+                                UIApplication.sharedApplication().openURL(NSURL(string: "http://maps.apple.com/?saddr=\(self.userAnnotation!.coordinate.latitude),\(self.userAnnotation!.coordinate.longitude)&daddr=\(each.coordinate.latitude),\(each.coordinate.longitude)&dirflg=d")!)
+                            }
                         }
                     }
                 })

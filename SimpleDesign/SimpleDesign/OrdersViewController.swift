@@ -102,8 +102,8 @@ extension OrdersViewController{
                 cell?.orderID = key as! String
             }
         }
-        if let _ = self.truckId {
-            cell?.isCustomer = false
+        if let _ = self.truckId {} else {
+            cell?.isCustomer = true
         }
     
         return cell!

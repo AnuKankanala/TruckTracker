@@ -58,7 +58,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
         add.addTextFieldWithConfigurationHandler({textField in
             textField.placeholder = "Enter new item price"
-            textField.keyboardType = UIKeyboardType.NumberPad
+            textField.keyboardType = UIKeyboardType.DecimalPad
             textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
             textField.returnKeyType = UIReturnKeyType.Next
         })
@@ -381,7 +381,7 @@ extension MenuViewController {
                         add.view.tintColor = UIColor.mydarkPinkColor
                         add.addTextFieldWithConfigurationHandler({textField in
                             textField.placeholder = "Enter new price"
-                            textField.keyboardType = UIKeyboardType.NumberPad
+                            textField.keyboardType = UIKeyboardType.DecimalPad
                             textField.autocapitalizationType = UITextAutocapitalizationType.Sentences
                             textField.returnKeyType = UIReturnKeyType.Next
                         })

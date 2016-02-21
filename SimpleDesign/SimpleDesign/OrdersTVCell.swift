@@ -20,7 +20,7 @@ class OrdersTVCell: UITableViewCell {
     var phoneNumber: String?
     var orderID: String!
     
-    var isCustomer = true
+    var isCustomer = false
     
     var order: NSDictionary! {
         didSet {
