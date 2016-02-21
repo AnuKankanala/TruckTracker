@@ -446,7 +446,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SHC-ZH-29R">
-                                <rect key="frame" x="-4" y="80" width="383" height="479"/>
+                                <rect key="frame" x="-4" y="110" width="383" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="aB6-S3-rgo" id="vAt-34-Wdc"/>
@@ -467,25 +467,39 @@
                                     <segue destination="wsW-qb-03N" kind="show" id="pqt-bR-VTt"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total sales - $0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICL-oE-kD6">
+                                <rect key="frame" x="31" y="70" width="313" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cjq-Fm-G3d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SHC-ZH-29R" firstAttribute="top" secondItem="ICL-oE-kD6" secondAttribute="bottom" constant="10" id="0fS-5o-xG8"/>
                             <constraint firstItem="ro6-iH-jpN" firstAttribute="top" secondItem="SHC-ZH-29R" secondAttribute="bottom" id="Bbg-IN-dff"/>
                             <constraint firstItem="15y-dQ-jyI" firstAttribute="trailing" secondItem="Tug-7s-bcz" secondAttribute="trailing" constant="20" id="GQj-oW-HTy"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="top" secondItem="Tug-7s-bcz" secondAttribute="bottom" constant="20" id="JiG-6u-B47"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="top" secondItem="xKo-QQ-h32" secondAttribute="bottom" id="JoN-4W-BE6"/>
                             <constraint firstItem="Tug-7s-bcz" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" constant="40" id="N90-YU-xws"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SHC-ZH-29R" secondAttribute="trailing" constant="-20" id="P6M-0z-xwM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ICL-oE-kD6" secondAttribute="trailing" constant="15" id="XC6-rK-EsO"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" constant="-20" id="lnv-kT-AAw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tug-7s-bcz" secondAttribute="trailing" constant="40" id="o2u-95-FKe"/>
                             <constraint firstItem="Tug-7s-bcz" firstAttribute="top" secondItem="xKo-QQ-h32" secondAttribute="bottom" constant="20" id="qzx-VS-Lpb"/>
                             <constraint firstItem="15y-dQ-jyI" firstAttribute="top" secondItem="Tug-7s-bcz" secondAttribute="top" constant="-10" id="s3u-rG-m9b"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" id="sfB-Ge-sJp"/>
+                            <constraint firstItem="ICL-oE-kD6" firstAttribute="top" secondItem="Tug-7s-bcz" secondAttribute="bottom" constant="10" id="t5R-mn-cSE"/>
+                            <constraint firstItem="ICL-oE-kD6" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" constant="15" id="uZ9-sp-QZN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SHC-ZH-29R" secondAttribute="trailing" id="xsJ-3J-UUR"/>
                             <constraint firstItem="15y-dQ-jyI" firstAttribute="bottom" secondItem="Tug-7s-bcz" secondAttribute="bottom" id="yK9-hZ-dur"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="JiG-6u-B47"/>
                                 <exclude reference="JoN-4W-BE6"/>
                                 <exclude reference="sfB-Ge-sJp"/>
                                 <exclude reference="xsJ-3J-UUR"/>
@@ -497,8 +511,10 @@
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="heightForSalesLabel" destination="cjq-Fm-G3d" id="g5i-19-Wph"/>
                         <outlet property="menuTableView" destination="SHC-ZH-29R" id="vqx-ew-NLa"/>
                         <outlet property="ordersPopUpButton" destination="15y-dQ-jyI" id="O2f-hg-PxF"/>
+                        <outlet property="salesLabel" destination="ICL-oE-kD6" id="lhn-m9-aBH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cz4-ue-QPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -514,11 +530,11 @@
                         <viewControllerLayoutGuide type="bottom" id="nD7-cG-DBm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1oC-IZ-p9W">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="78g-0c-ImJ">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="565"/>
+                                <rect key="frame" x="-4" y="0.0" width="383" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="wsW-qb-03N" id="eoE-Mi-nf5"/>
@@ -529,12 +545,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="78g-0c-ImJ" firstAttribute="leading" secondItem="1oC-IZ-p9W" secondAttribute="leadingMargin" constant="-20" id="7hW-VG-yTw"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="78g-0c-ImJ" secondAttribute="bottom" constant="38" id="Sh8-qj-8A6"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="78g-0c-ImJ" secondAttribute="bottom" id="Sh8-qj-8A6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="78g-0c-ImJ" secondAttribute="trailing" constant="-20" id="jwl-6b-Am2"/>
                             <constraint firstItem="78g-0c-ImJ" firstAttribute="top" secondItem="Irx-nX-a1C" secondAttribute="bottom" id="pCA-YU-t1i"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ordersTable" destination="78g-0c-ImJ" id="a0B-dj-C5F"/>

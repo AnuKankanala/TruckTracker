@@ -12,6 +12,8 @@ import Firebase
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var menuTableView: UITableView!
     @IBOutlet var ordersPopUpButton: UIButton!
+    @IBOutlet var salesLabel: UILabel!
+    @IBOutlet var heightForSalesLabel: NSLayoutConstraint!
     var menuDictionary = NSDictionary()
     var currentTruck : MapAnnotation!
     var ref = Firebase(url:"https://trucktracker.firebaseio.com/Trucks")
@@ -23,6 +25,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     var allowsEditing = false
     var currentUserID = ""
     var currentUserName = ""
+    var totalSales : CGFloat = 0.0
 
     func orderSummary() -> String {
         var temp = ""
@@ -125,6 +128,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.updateOrderNotifications()
                     }
                 } else {
+                    self.totalSales = 0.0
                     for (key,value) in self.ordersDict {
                         print("Current key is \(key)")
                         if let currentStatus = value["status"] as? String {
@@ -152,7 +156,27 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                     }
                 }
+                
                 self.ordersDict = newValue
+                
+                for (key,value) in self.ordersDict {
+                    print("Current key is \(key)")
+                    if let currentStatus = value["status"] as? String {
+                        if currentStatus == "CLOSED" {
+                            if let price = value["total"] as? CGFloat  {
+                                self.totalSales += price
+                            }
+                        }
+                    }
+                }
+                
+                self.salesLabel.text = String(format: "Total Sales: $%.2f", self.totalSales)
+            }
+            
+            if self.allowsEditing {
+                self.heightForSalesLabel.constant = 30.0
+            } else {
+                self.heightForSalesLabel.constant = 0
             }
             //self.addMyOrdersButton()
         })

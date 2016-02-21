@@ -10,7 +10,8 @@ import UIKit
 import Firebase
 
 class OrdersViewController: UIViewController {
-    var myOrders = NSDictionary()
+    var myOrders = [NSDictionary]()
+    var adminDict = NSDictionary()
     var currentUser = ""
     @IBOutlet var ordersTable: UITableView!
     var truckId : String?
@@ -28,9 +29,9 @@ class OrdersViewController: UIViewController {
             Firebase(url:"https://trucktracker.firebaseio.com/Orders").queryOrderedByChild("truckID").queryEqualToValue(exists).observeEventType(.Value, withBlock: { snapshot -> Void in
                 //print("User orders are \(snapshot)")
                 if let value = snapshot.value as? NSDictionary {
-                    self.myOrders = value
-                    //self.myOrders = value.allValues as! [NSDictionary]
-                    //self.myOrders = self.myOrders.sort{return $0["timestamp"] as! Double >  $1["timestamp"] as! Double}
+                    self.adminDict = value
+                    self.myOrders = value.allValues as! [NSDictionary]
+                    self.myOrders = self.myOrders.sort{return $0["timestamp"] as! Double >  $1["timestamp"] as! Double}
                     self.ordersTable.reloadData()
                 }
             })
@@ -38,11 +39,15 @@ class OrdersViewController: UIViewController {
             Firebase(url:"https://trucktracker.firebaseio.com/Orders").queryOrderedByChild("userID").queryEqualToValue(self.currentUser).observeEventType(.Value, withBlock: { snapshot -> Void in
                 //print("User orders are \(snapshot)")
                 if let value = snapshot.value as? NSDictionary {
-                    self.myOrders = value
+                    self.adminDict = value
+                    self.myOrders = value.allValues as! [NSDictionary]
+                    self.myOrders = self.myOrders.sort{return $0["timestamp"] as! Double >  $1["timestamp"] as! Double}
                     self.ordersTable.reloadData()
                 }
             })
         }
+        
+        self.ordersTable.registerNib(UINib(nibName: "OrdersTVCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "orderCell")
     }
     
     func updateInformationForThisUserOnTextField(order: NSDictionary, label: UILabel) {
@@ -82,68 +87,58 @@ class OrdersViewController: UIViewController {
 extension OrdersViewController{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell : UITableViewCell
+       
+        var cell : OrdersTVCell? = tableView.dequeueReusableCellWithIdentifier("orderCell", forIndexPath: indexPath) as? OrdersTVCell
         
-        if let reuseCell = tableView.dequeueReusableCellWithIdentifier("CELL")  {
-            cell = reuseCell
-        } else {
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "CELL")
+        if cell == nil {
+            let nib:Array = NSBundle.mainBundle().loadNibNamed("OrdersTVCell", owner: self, options: nil)
+            cell = nib[0] as? OrdersTVCell
         }
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.Default
-        
-        cell.textLabel?.textColor = UIColor.mybrownColor
-        cell.textLabel?.highlightedTextColor = UIColor.mydarkPinkColor
-        cell.textLabel?.font = UIFont.boldSystemFontOfSize(15)
-        cell.detailTextLabel?.textColor = UIColor.mybrownColor
-        cell.detailTextLabel?.highlightedTextColor = UIColor.mydarkPinkColor
-        
-        if let currentMenuOption = myOrders[myOrders.allKeys[indexPath.row] as! String] as? NSDictionary {
-            if let order = currentMenuOption["Order"] as? String {
-                cell.textLabel?.text = order
-                self.updateInformationForThisUserOnTextField(currentMenuOption, label: cell.detailTextLabel!)
+
+        cell?.order = myOrders[indexPath.row]
+        for (key,value) in self.adminDict {
+            if value as! NSDictionary == self.myOrders[indexPath.row] {
+                cell?.orderID = key as! String
             }
-            
+        }
+        if let _ = self.truckId {
+            cell?.isCustomer = false
         }
     
-        return cell
+        return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.ordersTable.deselectRowAtIndexPath(indexPath, animated: false)
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50.0
+        return 100.0
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.myOrders.allKeys.count
+        return self.myOrders.count
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         var buttons = [UITableViewRowAction]()
         let button1 = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Call") { (action, indexPath) -> Void in
-            if let order = self.myOrders[self.myOrders.allKeys[indexPath.row] as! String] as? NSDictionary {
-                if let id = order["userID"] as? String {
-                    if let phone = self.phoneNumberDictionary[id] {
-                        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(phone)")!)
-                    }
-                }
-                
+            
+            let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! OrdersTVCell
+            if let phoneNumber = currentCell.phoneNumber {
+                UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(phoneNumber)")!)
             }
         }
         button1.backgroundColor = UIColor.greenColor()
         buttons.append(button1)
         
-        let key = self.myOrders.allKeys[indexPath.row] as! String
-        if let order = self.myOrders[key] as? NSDictionary {
-            if let status = order["status"] as? String {
-                let button2 = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: status == "NEW" ? "DONE" : "CLOSED") { (action, indexPath) -> Void in
-                    Firebase(url:"https://trucktracker.firebaseio.com/Orders").childByAppendingPath("/\(key)/status").setValue(status == "NEW" ? "DONE" : "CLOSED")
-                }
-                button2.backgroundColor = UIColor.redColor()
-                if status != "CLOSED"  {
-                    buttons.append(button2)
-                }
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! OrdersTVCell
+        if let status = currentCell.order["status"] as? String {
+            let button2 = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: status == "NEW" ? "DONE" : "CLOSED") { (action, indexPath) -> Void in
+                Firebase(url:"https://trucktracker.firebaseio.com/Orders").childByAppendingPath("/\(currentCell.orderID)/status").setValue(status == "NEW" ? "DONE" : "CLOSED")
+            }
+            button2.backgroundColor = UIColor.redColor()
+            if status != "CLOSED"  {
+                buttons.append(button2)
             }
         }
         

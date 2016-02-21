@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D5EC0601C7A574700FD87C8 /* OrdersTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EC05E1C7A574700FD87C8 /* OrdersTVCell.swift */; };
+		8D5EC0611C7A574700FD87C8 /* OrdersTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5EC05F1C7A574700FD87C8 /* OrdersTVCell.xib */; };
 		D607207E1C44493200323596 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607207D1C44493200323596 /* MapAnnotation.swift */; };
 		D60720801C44495E00323596 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607207F1C44495E00323596 /* UserLocation.swift */; };
 		D629BD871C1B3CA5009D00D4 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629BD861C1B3CA5009D00D4 /* SecondVC.swift */; };
@@ -63,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D5EC05E1C7A574700FD87C8 /* OrdersTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersTVCell.swift; sourceTree = "<group>"; };
+		8D5EC05F1C7A574700FD87C8 /* OrdersTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrdersTVCell.xib; sourceTree = "<group>"; };
 		D607207D1C44493200323596 /* MapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		D607207F1C44495E00323596 /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		D629BD861C1B3CA5009D00D4 /* SecondVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 				D6ED20861C113BEC00979EB6 /* Info.plist */,
 				D607207D1C44493200323596 /* MapAnnotation.swift */,
 				D607207F1C44495E00323596 /* UserLocation.swift */,
+				8D5EC05E1C7A574700FD87C8 /* OrdersTVCell.swift */,
+				8D5EC05F1C7A574700FD87C8 /* OrdersTVCell.xib */,
 			);
 			path = SimpleDesign;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 			files = (
 				D6ED20851C113BEC00979EB6 /* LaunchScreen.storyboard in Resources */,
 				D6ED20821C113BEC00979EB6 /* Assets.xcassets in Resources */,
+				8D5EC0611C7A574700FD87C8 /* OrdersTVCell.xib in Resources */,
 				D6ED20801C113BEC00979EB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +387,7 @@
 				E2E99C9D1C1E51FA00658647 /* UIAlertViewExtension.swift in Sources */,
 				D6ED207B1C113BEC00979EB6 /* AppDelegate.swift in Sources */,
 				E2E99C9C1C1E51FA00658647 /* NSJSONSerializationExtension.swift in Sources */,
+				8D5EC0601C7A574700FD87C8 /* OrdersTVCell.swift in Sources */,
 				D60720801C44495E00323596 /* UserLocation.swift in Sources */,
 				E2E99C9B1C1E51FA00658647 /* NSDateExtension.swift in Sources */,
 				E2E99C9A1C1E51FA00658647 /* ArrayExtension.swift in Sources */,
