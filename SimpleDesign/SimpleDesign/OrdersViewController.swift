@@ -96,14 +96,16 @@ extension OrdersViewController{
         }
         
 
+        if let _ = self.truckId {} else {
+            cell?.isCustomer = true
+        }
+        
         cell?.order = myOrders[indexPath.row]
+        
         for (key,value) in self.adminDict {
             if value as! NSDictionary == self.myOrders[indexPath.row] {
                 cell?.orderID = key as! String
             }
-        }
-        if let _ = self.truckId {} else {
-            cell?.isCustomer = true
         }
     
         return cell!
