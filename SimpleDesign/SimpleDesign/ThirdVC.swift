@@ -250,18 +250,24 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
     func saveStoreDetailsInServerWithLocation(location: CLLocation) {
         if let saveDate = NSUserDefaults.standardUserDefaults().objectForKey("SaveDate") as? NSDate {
             print("time difference is \(NSDate().timeIntervalSinceDate(saveDate))")
-            if NSDate().timeIntervalSinceDate(saveDate) > 10 {
+            if self.mapAnnotation.count > 0 {
+                if NSDate().timeIntervalSinceDate(saveDate) > 10 {
+                    let truck = self.mapAnnotation[0]
+                    Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/latitude").setValue(location.coordinate.latitude)
+                    Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/longitude").setValue(location.coordinate.longitude)
+                    NSUserDefaults.standardUserDefaults().setValue(NSDate(), forKey: "SaveDate")
+                    self.getTruckLocations()
+                } else {
+                    self.addTruckAnnotationWithCoordinates(self.mapAnnotation)
+                }
+            }
+        } else if self.mapAnnotation.count > 0 {
+            if self.mapAnnotation.count > 0 {
                 let truck = self.mapAnnotation[0]
                 Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/latitude").setValue(location.coordinate.latitude)
                 Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/longitude").setValue(location.coordinate.longitude)
                 NSUserDefaults.standardUserDefaults().setValue(NSDate(), forKey: "SaveDate")
-                self.getTruckLocations()
             }
-        } else if self.mapAnnotation.count > 0 {
-            let truck = self.mapAnnotation[0]
-            Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/latitude").setValue(location.coordinate.latitude)
-            Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/longitude").setValue(location.coordinate.longitude)
-            NSUserDefaults.standardUserDefaults().setValue(NSDate(), forKey: "SaveDate")
         }
     }
     
@@ -314,19 +320,34 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
     //Clearing the Map and adding new locations to the Map
     func addTruckAnnotationWithCoordinates(aLocation: [MapAnnotation])
     {
-        for each in self.mapAnnotation {
-            self.mapView.removeAnnotation(each)
-        }
-        
         self.mapAnnotation = []
-        
         self.mapAnnotation = aLocation
         
         if let exists = self.userAnnotation {
             if !self.istruckoperator {
                 var newArray = self.mapAnnotation
                 newArray.append(exists)
-                self.mapView.showAnnotations(newArray, animated: true)
+                if self.mapView.annotations.count > 1 {
+                    for each in self.mapView.annotations {
+                        if let myAnnotation = each as? MapAnnotation {
+                            for new in self.mapAnnotation {
+                                if let annotationID = myAnnotation.id {
+                                    if annotationID == new.id! {
+                                        if myAnnotation.coordinate.latitude == new.coordinate.latitude && myAnnotation.coordinate.longitude == new.coordinate.longitude {} else {
+                                            self.mapView.removeAnnotation(each)
+                                            self.mapView.addAnnotation(new)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    for each in self.mapAnnotation {
+                        self.mapView.removeAnnotation(each)
+                    }
+                    self.mapView.showAnnotations(newArray, animated: true)
+                }
             } else {
                 self.mapView.showAnnotations([exists], animated: true)
             }
