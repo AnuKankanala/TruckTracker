@@ -251,7 +251,7 @@ class ThirdVC: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate, 
         if let saveDate = NSUserDefaults.standardUserDefaults().objectForKey("SaveDate") as? NSDate {
             print("time difference is \(NSDate().timeIntervalSinceDate(saveDate))")
             if self.mapAnnotation.count > 0 {
-                if NSDate().timeIntervalSinceDate(saveDate) > 10 {
+                if NSDate().timeIntervalSinceDate(saveDate) > 1 {
                     let truck = self.mapAnnotation[0]
                     Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/latitude").setValue(location.coordinate.latitude)
                     Firebase(url:"https://trucktracker.firebaseio.com/Trucks/\(truck.id!)/longitude").setValue(location.coordinate.longitude)
@@ -456,7 +456,7 @@ extension ThirdVC {
                     each.image = UIImage(named: "truckIcon")?.tintWithColor(UIColor.redColor())
                     each.canShowCallout = true
                     each.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
-                    self.mapView.selectAnnotation(each.annotation!, animated: true)
+                    //self.mapView.selectAnnotation(each.annotation!, animated: true)
                 }
             }
         }
@@ -508,8 +508,10 @@ extension ThirdVC {
                 self.performSegueWithIdentifier("showMenu", sender: self.mapAnnotation[0])
             } else {
                 for each in self.mapAnnotation {
-                    if each == view.annotation as? MapAnnotation {
-                        self.performSegueWithIdentifier("showMenu", sender: each)
+                    if let myannotation = view.annotation as? MapAnnotation {
+                        if each.id! == myannotation.id! {
+                            self.performSegueWithIdentifier("showMenu", sender: each)
+                        }
                     }
                 }
             }

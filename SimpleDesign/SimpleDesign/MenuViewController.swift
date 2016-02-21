@@ -11,6 +11,7 @@ import Firebase
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var menuTableView: UITableView!
+    @IBOutlet var ordersPopUpButton: UIButton!
     var menuDictionary = NSDictionary()
     var currentTruck : MapAnnotation!
     var ref = Firebase(url:"https://trucktracker.firebaseio.com/Trucks")
@@ -104,6 +105,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Order", style: UIBarButtonItemStyle.Plain, target: self, action: "startOrdering")
         }
+        
+        
+        self.ordersPopUpButton.layer.cornerRadius = 20.0
+        
         if let exists = currentTruck.menu {
             self.menuDictionary = exists
         }
@@ -111,10 +116,34 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let name = currentTruck.title {
             self.title = name
         }
-        Firebase(url:"https://trucktracker.firebaseio.com/Trucks/Truck1/Orders").queryOrderedByChild("id").queryEqualToValue(UIDevice.currentDevice().identifierForVendor!.UUIDString).observeEventType(.Value, withBlock: { snapshot -> Void in
+        Firebase(url:"https://trucktracker.firebaseio.com/Orders").queryOrderedByChild("truckID").queryEqualToValue(self.currentTruck.id!).observeEventType(.Value, withBlock: { snapshot -> Void in
             //print("User orders are \(snapshot)")
-            if let value = snapshot.value as? NSDictionary {
-                self.ordersDict = value
+            if let newValue = snapshot.value as? NSDictionary {
+                if self.allowsEditing {
+                    if self.ordersDict.count < newValue.count {
+                        NSUserDefaults.standardUserDefaults().setObject(newValue.count - self.ordersDict.count, forKey: "NewUpdates")
+                        self.updateOrderNotifications()
+                    }
+                } else {
+                    for (key,value) in self.ordersDict {
+                        print("Current key is \(key)")
+                        if let currentStatus = value["status"] as? String {
+                            if let newOrderUpdate = newValue[key as! String] as? NSDictionary {
+                                if let newStatus = newOrderUpdate["status"] as? String {
+                                    if newStatus != currentStatus {
+                                        if let counter = NSUserDefaults.standardUserDefaults().objectForKey("NewUpdates") as? Int {
+                                            NSUserDefaults.standardUserDefaults().setObject(counter + 1, forKey: "NewUpdates")
+                                        } else {
+                                            NSUserDefaults.standardUserDefaults().setObject(1, forKey: "NewUpdates")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    self.updateOrderNotifications()
+                }
+                self.ordersDict = newValue
             }
             //self.addMyOrdersButton()
         })
@@ -128,6 +157,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             //self.addMyOrdersButton()
         })
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.updateOrderNotifications()
+    }
+    
+    func updateOrderNotifications() {
+        if let newUpdates = NSUserDefaults.standardUserDefaults().objectForKey("NewUpdates") as? Int {
+            self.ordersPopUpButton.hidden = false
+            self.ordersPopUpButton.setTitle("\(newUpdates)", forState: UIControlState.Normal)
+        } else {
+            self.ordersPopUpButton.hidden = true
+        }
     }
 
     func startOrdering() {
@@ -152,7 +194,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             })
             order.addAction(place)
             let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {(action) -> Void in
-                self.resetValues()
+                self.cancelOrder()
             })
             order.addAction(cancel)
             self.presentViewController(order, animated: true, completion: nil)
@@ -238,6 +280,8 @@ extension MenuViewController {
                     } else {
                         cell.setSelected(false, animated: false)
                     }
+                } else {
+                    cell.accessoryView = nil
                 }
             }
         }

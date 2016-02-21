@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uo0-DI-khO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uo0-DI-khO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -453,10 +453,25 @@
                                     <outlet property="delegate" destination="aB6-S3-rgo" id="HCq-e3-BbZ"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15y-dQ-jyI">
+                                <rect key="frame" x="299" y="10" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="C2B-bC-WDD"/>
+                                    <constraint firstAttribute="width" constant="40" id="YG1-DZ-WPX"/>
+                                </constraints>
+                                <state key="normal" title="20">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="wsW-qb-03N" kind="show" id="pqt-bR-VTt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ro6-iH-jpN" firstAttribute="top" secondItem="SHC-ZH-29R" secondAttribute="bottom" id="Bbg-IN-dff"/>
+                            <constraint firstItem="15y-dQ-jyI" firstAttribute="trailing" secondItem="Tug-7s-bcz" secondAttribute="trailing" constant="20" id="GQj-oW-HTy"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="top" secondItem="Tug-7s-bcz" secondAttribute="bottom" constant="20" id="JiG-6u-B47"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="top" secondItem="xKo-QQ-h32" secondAttribute="bottom" id="JoN-4W-BE6"/>
                             <constraint firstItem="Tug-7s-bcz" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" constant="40" id="N90-YU-xws"/>
@@ -464,14 +479,17 @@
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" constant="-20" id="lnv-kT-AAw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tug-7s-bcz" secondAttribute="trailing" constant="40" id="o2u-95-FKe"/>
                             <constraint firstItem="Tug-7s-bcz" firstAttribute="top" secondItem="xKo-QQ-h32" secondAttribute="bottom" constant="20" id="qzx-VS-Lpb"/>
+                            <constraint firstItem="15y-dQ-jyI" firstAttribute="top" secondItem="Tug-7s-bcz" secondAttribute="top" constant="-10" id="s3u-rG-m9b"/>
                             <constraint firstItem="SHC-ZH-29R" firstAttribute="leading" secondItem="3sn-qY-xCq" secondAttribute="leadingMargin" id="sfB-Ge-sJp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SHC-ZH-29R" secondAttribute="trailing" id="xsJ-3J-UUR"/>
+                            <constraint firstItem="15y-dQ-jyI" firstAttribute="bottom" secondItem="Tug-7s-bcz" secondAttribute="bottom" id="yK9-hZ-dur"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="JoN-4W-BE6"/>
                                 <exclude reference="sfB-Ge-sJp"/>
                                 <exclude reference="xsJ-3J-UUR"/>
+                                <exclude reference="yK9-hZ-dur"/>
                             </mask>
                         </variation>
                     </view>
@@ -480,6 +498,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="menuTableView" destination="SHC-ZH-29R" id="vqx-ew-NLa"/>
+                        <outlet property="ordersPopUpButton" destination="15y-dQ-jyI" id="O2f-hg-PxF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cz4-ue-QPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -549,5 +568,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tKV-tM-Rhd"/>
+        <segue reference="pqt-bR-VTt"/>
     </inferredMetricsTieBreakers>
 </document>

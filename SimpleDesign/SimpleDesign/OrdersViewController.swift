@@ -20,6 +20,8 @@ class OrdersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "My Orders"
+        
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "NewUpdates")
 
         // Do any additional setup after loading the view.
         if let exists = self.truckId {
@@ -129,6 +131,19 @@ extension OrdersViewController{
         }
         button1.backgroundColor = UIColor.greenColor()
         buttons.append(button1)
+        
+        let key = self.myOrders.allKeys[indexPath.row] as! String
+        if let order = self.myOrders[key] as? NSDictionary {
+            if let status = order["status"] as? String {
+                let button2 = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: status == "NEW" ? "DONE" : "CLOSED") { (action, indexPath) -> Void in
+                    Firebase(url:"https://trucktracker.firebaseio.com/Orders").childByAppendingPath("/\(key)/status").setValue(status == "NEW" ? "DONE" : "CLOSED")
+                }
+                button2.backgroundColor = UIColor.redColor()
+                if status != "CLOSED"  {
+                    buttons.append(button2)
+                }
+            }
+        }
         
         return buttons
     }
